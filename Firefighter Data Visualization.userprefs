@@ -1,0 +1,22 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Visualizer/MapPanel/LocationController.cs">
+    <Files>
+      <File FileName="Assets/Visualizer/RESTNetworkManager.cs" Line="17" Column="52" NotebookId="1" />
+      <File FileName="Assets/Visualizer/WSNetworkManager.cs" Line="31" Column="17" NotebookId="1" />
+      <File FileName="Assets/Visualizer/MapPanel/LocationController.cs" Line="17" Column="29" NotebookId="1" />
+    </Files>
+    <FloatingWindows>
+      <FloatingWindow WindowId="1" X="1406" Y="116" Width="1154" Height="1047">
+        <Files>
+          <File FileName="Assets/APIs/Infinity Code/Online maps/Examples (API usage)/CustomDownloadTileExample.cs" Line="36" Column="5" />
+          <File FileName="Assets/APIs/Infinity Code/Online maps/Scripts/Plugins/OnlineMapsCache.cs" Line="21" Column="1" />
+        </Files>
+      </FloatingWindow>
+    </FloatingWindows>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

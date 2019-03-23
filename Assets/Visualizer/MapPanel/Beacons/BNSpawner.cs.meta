@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: dd3f6abf428faa147bd7c34b1df04127
+timeCreated: 1496176742
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - BNPrefab: {fileID: 1923984764289434, guid: cb512e7374c15e648ba0b538ed6bcf77, type: 2}
+  - Spawner: {instanceID: 0}
+  - Panel: {instanceID: 0}
+  - terminal: {instanceID: 0}
+  - NetworkManager: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

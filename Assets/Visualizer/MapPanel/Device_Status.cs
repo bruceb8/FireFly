@@ -14,7 +14,7 @@ public struct DevicePosition{
 }
 
 //A general class that holds information that every firefighter, beacon or drone has.
-public class Device_Status : MonoBehaviour{
+public class Device_Status{
 	public string id;
 	public string type; 
 	public float lat;
@@ -66,16 +66,16 @@ public class Device_Status : MonoBehaviour{
 		return false;
 
 	}
-    public bool Equals(Object obj)
-    {
-        Device_Status t = obj as Device_Status;
-        if(this.id ==t.id)
-            return true;
-        return false;
-    }
+    //public bool Equals(Object obj)
+    //{
+    //    Device_Status t = obj as Device_Status;
+    //    if(this.id ==t.id)
+    //        return true;
+    //    return false;
+    //}
 
-    public override int GetHashCode()//fix later!
-    {
-        return 1;
-    }
+    //public override int GetHashCode()//fix later!
+    //{
+    //    return 1;
+    //}
 }

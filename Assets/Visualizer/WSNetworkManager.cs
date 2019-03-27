@@ -145,6 +145,7 @@ public class WSNetworkManager : MonoBehaviour
     private int findDeviceByID(Device_Status input, int type_of_device)
     {
         int index = 0;
+
         switch (type_of_device)
         {
             case 1:

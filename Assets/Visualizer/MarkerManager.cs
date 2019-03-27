@@ -53,15 +53,13 @@ public class MarkerManager : MonoBehaviour {
 	}
 	void updateMarker(Device_Status device){
 		foreach (OnlineMapsMarker marker in m.markers) {
-//			Debug.Log (device.id + "\t" + marker.label);
+
 			if (device.id == marker.label) {
-//				if (new Vector2 (device.lon, device.lat) != marker.position) {
-//					Debug.Log ("Changed Position");
-//					Debug.Log(device.lon + "\t" + device.lat);
+				if (new Vector2 (device.lon, device.lat) != marker.position) {
 					marker.SetPosition (device.lon, device.lat);
 					OnlineMaps.instance.Redraw();
 					break;
-//				}
+				}
 			}
 		}
 	}

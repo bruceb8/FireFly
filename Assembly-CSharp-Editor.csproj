@@ -61,40 +61,53 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\APIs\Infinity Code\Online maps\Scripts\Editor\Controls\OnlineMapsControlBase2DEditor.cs" />
-    <Compile Include="Assets\APIs\Infinity Code\Online maps\Scripts\Editor\Controls\OnlineMapsControlBase3DEditor.cs" />
-    <Compile Include="Assets\APIs\Infinity Code\Online maps\Scripts\Editor\Controls\OnlineMapsControlBaseEditor.cs" />
-    <Compile Include="Assets\APIs\Infinity Code\Online maps\Scripts\Editor\Controls\OnlineMapsDFGUITextureControlEditor.cs" />
-    <Compile Include="Assets\APIs\Infinity Code\Online maps\Scripts\Editor\Controls\OnlineMapsGUITextureControlEditor.cs" />
-    <Compile Include="Assets\APIs\Infinity Code\Online maps\Scripts\Editor\Controls\OnlineMapsIGUITextureControlEditor.cs" />
-    <Compile Include="Assets\APIs\Infinity Code\Online maps\Scripts\Editor\Controls\OnlineMapsNGUITextureControlEditor.cs" />
-    <Compile Include="Assets\APIs\Infinity Code\Online maps\Scripts\Editor\Controls\OnlineMapsSpriteRendererControlEditor.cs" />
-    <Compile Include="Assets\APIs\Infinity Code\Online maps\Scripts\Editor\Controls\OnlineMapsTextureControlEditor.cs" />
-    <Compile Include="Assets\APIs\Infinity Code\Online maps\Scripts\Editor\Controls\OnlineMapsTilesetControlEditor.cs" />
-    <Compile Include="Assets\APIs\Infinity Code\Online maps\Scripts\Editor\Controls\OnlineMapsUIImageControlEditor.cs" />
-    <Compile Include="Assets\APIs\Infinity Code\Online maps\Scripts\Editor\Controls\OnlineMapsUIRawImageControlEditor.cs" />
-    <Compile Include="Assets\APIs\Infinity Code\Online maps\Scripts\Editor\OnlineMapsAboutWindow.cs" />
-    <Compile Include="Assets\APIs\Infinity Code\Online maps\Scripts\Editor\OnlineMapsCustomURLWizard.cs" />
-    <Compile Include="Assets\APIs\Infinity Code\Online maps\Scripts\Editor\OnlineMapsEditor.cs" />
-    <Compile Include="Assets\APIs\Infinity Code\Online maps\Scripts\Editor\OnlineMapsEditorUtils.cs" />
-    <Compile Include="Assets\APIs\Infinity Code\Online maps\Scripts\Editor\OnlineMapsImporter.cs" />
-    <Compile Include="Assets\APIs\Infinity Code\Online maps\Scripts\Editor\OnlineMapsPackageManager.cs" />
-    <Compile Include="Assets\APIs\Infinity Code\Online maps\Scripts\Editor\OnlineMapsPrefs.cs" />
-    <Compile Include="Assets\APIs\Infinity Code\Online maps\Scripts\Editor\OnlineMapsUpdater.cs" />
-    <Compile Include="Assets\APIs\Infinity Code\Online maps\Scripts\Editor\OnlineMapsWelcome.cs" />
-    <Compile Include="Assets\APIs\Infinity Code\Online maps\Scripts\Editor\OnlineMapsWizard.cs" />
-    <Compile Include="Assets\APIs\Infinity Code\Online maps\Scripts\Editor\Plugins\OnlineMapsBuildingBaseEditor.cs" />
-    <Compile Include="Assets\APIs\Infinity Code\Online maps\Scripts\Editor\Plugins\OnlineMapsBuildingsEditor.cs" />
-    <Compile Include="Assets\APIs\Infinity Code\Online maps\Scripts\Editor\Plugins\OnlineMapsCacheEditor.cs" />
-    <Compile Include="Assets\APIs\Infinity Code\Online maps\Scripts\Editor\Plugins\OnlineMapsJSLoaderEditor.cs" />
-    <Compile Include="Assets\APIs\Infinity Code\Online maps\Scripts\Editor\Plugins\OnlineMapsLimitsEditor.cs" />
-    <Compile Include="Assets\APIs\Infinity Code\Online maps\Scripts\Editor\Plugins\OnlineMapsLocationServiceEditor.cs" />
-    <Compile Include="Assets\APIs\Infinity Code\Online maps\Scripts\Editor\Plugins\OnlineMapsLocationServiceEditorBase.cs" />
-    <Compile Include="Assets\APIs\Infinity Code\Online maps\Scripts\Editor\Plugins\OnlineMapsRWTConnectorEditor.cs" />
-    <Compile Include="Assets\APIs\Infinity Code\Online maps\Scripts\Editor\PropertyDrawers\OnlineMapsBuildingMaterialPropertyDrawer.cs" />
-    <Compile Include="Assets\APIs\Infinity Code\Online maps\Scripts\Editor\PropertyDrawers\OnlineMapsMarker3DPropertyDrawer.cs" />
-    <Compile Include="Assets\APIs\Infinity Code\Online maps\Scripts\Editor\PropertyDrawers\OnlineMapsMarkerPropertyDrawer.cs" />
-    <Compile Include="Assets\APIs\Infinity Code\Online maps\Scripts\Editor\PropertyDrawers\OnlineMapsRangePropertyDrawer.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\Buildings\OnlineMapsBuildingBaseEditor.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\Buildings\OnlineMapsBuildingsEditor.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\Controls\OnlineMapsControlBase2DEditor.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\Controls\OnlineMapsControlBase3DEditor.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\Controls\OnlineMapsControlBaseDynamicMeshEditor.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\Controls\OnlineMapsControlBaseEditor.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\Controls\OnlineMapsControlBaseUIEditor.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\Controls\OnlineMapsNGUITextureControlEditor.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\Controls\OnlineMapsSpriteRendererControlEditor.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\Controls\OnlineMapsTextureControlEditor.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\Controls\OnlineMapsTilesetControlEditor.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\Controls\OnlineMapsUIImageControlEditor.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\Controls\OnlineMapsUIRawImageControlEditor.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\EditorLayout\OnlineMapsFormattedEditor.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\Elevations\OnlineMapsArcGISElevationManagerEditor.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\Elevations\OnlineMapsBingMapsElevationManagerEditor.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\Elevations\OnlineMapsElevationManagerBaseEditor.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\Elevations\OnlineMapsMapboxElevationManagerEditor.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\Elevations\OnlineMapsTiledElevationManagerEditor.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\LocationService\OnlineMapsLocationServiceEditor.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\LocationService\OnlineMapsLocationServiceEditorBase.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\Managers\OnlineMapsMarkerManager3DEditor.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\Managers\OnlineMapsMarkerManagerBaseEditor.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\Managers\OnlineMapsMarkerManagerEditor.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\OnlineMapsEditor.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\OnlineMapsEditorUtils.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\OnlineMapsImporter.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\OnlineMapsPackageManager.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\OnlineMapsPrefs.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\Plugins\OnlineMapsCacheEditor.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\Plugins\OnlineMapsCameraOrbitEditor.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\Plugins\OnlineMapsLimitsEditor.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\PropertyDrawers\OnlineMapsBuildingMaterialPropertyDrawer.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\PropertyDrawers\OnlineMapsMarker3DPropertyDrawer.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\PropertyDrawers\OnlineMapsMarkerBasePropertyDrawer.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\PropertyDrawers\OnlineMapsMarkerPropertyDrawer.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\PropertyDrawers\OnlineMapsRangePropertyDrawer.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\Third-Party\OnlineMapsEasyTouchConnectorEditor.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\Third-Party\OnlineMapsFingersTouchGesturesConnectorEditor.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\Third-Party\OnlineMapsPanoConnectorEditor.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\Third-Party\OnlineMapsRWTConnectorEditor.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\Third-Party\OnlineMapsTouchScriptConnectorEditor.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\Windows\OnlineMapsAboutWindow.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\Windows\OnlineMapsCustomURLWizard.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\Windows\OnlineMapsUpdater.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\Windows\OnlineMapsWelcome.cs" />
+    <Compile Include="Assets\Infinity Code\Online maps\Scripts\Editor\Windows\OnlineMapsWizard.cs" />
     <Compile Include="Assets\Mapbox\Core\cheap-ruler-cs\Tests\Editor\CheapRulerCsTests.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Tests\UnitTests\Editor\BboxToGeoCoordinateBoundsConverterTest.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Tests\UnitTests\Editor\BearingFilterTest.cs" />
@@ -454,9 +467,6 @@
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>/Users/ipalabs/Documents/unityFire/firefly/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Purchasing">
-      <HintPath>/Users/ipalabs/Documents/unityFire/firefly/Library/PackageCache/com.unity.purchasing@2.0.3/UnityEngine.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Purchasing">
       <HintPath>/Users/ipalabs/Documents/unityFire/firefly/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>

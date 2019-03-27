@@ -29,6 +29,9 @@ using UnityEditor;
 public class OnlineMaps : MonoBehaviour, ISerializationCallbackReceiver
 {
 #region Variables
+
+	public int marker_count = 0;
+
     /// <summary>
     /// The current version of Online Maps
     /// </summary>
@@ -237,7 +240,7 @@ public class OnlineMaps : MonoBehaviour, ISerializationCallbackReceiver
     /// List of all 2D markers. <br/>
     /// Use AddMarker, RemoveMarker and RemoveAllMarkers.
     /// </summary>
-    public OnlineMapsMarker[] markers;
+	public OnlineMapsMarker [] markers;
 
     /// <summary>
     /// A flag that indicates that need to redraw the map.
@@ -620,6 +623,7 @@ public class OnlineMaps : MonoBehaviour, ISerializationCallbackReceiver
     {
         marker.Init();
         needRedraw = allowRedraw = true;
+
         Array.Resize(ref markers, markers.Length + 1);
         markers[markers.Length - 1] = marker;
         if (OnMarkerAdded != null) OnMarkerAdded(marker);

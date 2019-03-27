@@ -6,12 +6,14 @@ using System.IO;
 public class MarkerManager : MonoBehaviour {
 	public GameObject map;
 	private OnlineMaps m;
+    private OnlineMapsMarkerManager m_manager;
 	public WSNetworkManager WSManager; 
 	private Texture2D FF_texture, BN_texture, DN_texture;
 
 	// Use this for initialization
 	void Start () {
 		m = map.GetComponent<OnlineMaps>();
+        m_manager = map.GetComponent<OnlineMapsMarkerManager>();
 		//load textures for devices
 		byte[] FileData;
 
@@ -33,7 +35,7 @@ public class MarkerManager : MonoBehaviour {
 
 		foreach(Device_Status ff in ffs){
 			if (!ff.isMarker) {
-				m.AddMarker (new Vector2 (ff.lon, ff.lat), FF_texture, ff.id);
+				m_manager.Create(new Vector2 (ff.lon, ff.lat), FF_texture, ff.id);
 				ff.isMarker = true;
 			} else {
 				updateMarker (ff);
@@ -41,7 +43,7 @@ public class MarkerManager : MonoBehaviour {
 		}
 		foreach (Device_Status bn in bns) {
 			if (!bn.isMarker) {
-				m.AddMarker (new Vector2 (bn.lon, bn.lat), FF_texture, bn.id);
+                m_manager.Create(new Vector2 (bn.lon, bn.lat), FF_texture, bn.id);
 				bn.isMarker = true;
 			} else {
 				updateMarker (bn);
@@ -52,7 +54,7 @@ public class MarkerManager : MonoBehaviour {
 		}
 	}
 	void updateMarker(Device_Status device){
-		foreach (OnlineMapsMarker marker in m.markers) {
+		foreach (OnlineMapsMarker marker in m_manager.items) {
 
 			if (device.id == marker.label) {
 				if (new Vector2 (device.lon, device.lat) != marker.position) {

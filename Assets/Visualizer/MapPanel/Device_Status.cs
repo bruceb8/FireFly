@@ -74,7 +74,7 @@ public class Device_Status : MonoBehaviour{
         return false;
     }
 
-    public override int GetHashCode()
+    public override int GetHashCode()//fix later!
     {
         return 1;
     }

@@ -26,8 +26,7 @@ public class MarkerManager : MonoBehaviour {
 	void Update () {
 		updateMarkerPos ();
 	}
-		
-
+	
 	void updateMarkerPos(){
 		List<Device_Status> ffs = WSManager.firefighters;
 		List<Device_Status> bns = WSManager.beacons;
@@ -53,6 +52,7 @@ public class MarkerManager : MonoBehaviour {
 
 		}
 	}
+
 	void updateMarker(Device_Status device){
 		foreach (OnlineMapsMarker marker in m_manager.items) {
 

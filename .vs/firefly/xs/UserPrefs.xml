@@ -1,0 +1,30 @@
+﻿<Properties StartupConfiguration="{E9466C38-096A-0965-85B6-05C0FB580B85}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Visualizer/WSNetworkManager.cs">
+    <Files>
+      <File FileName="Assets/Visualizer/MapPanel/Device_Status.cs" Line="16" Column="23" />
+      <File FileName="Assets/Visualizer/WSNetworkManager.cs" Line="148" Column="1" />
+      <File FileName="Assets/Visualizer/MarkerManager.cs" Line="111" Column="59" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="firefly" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Visualizer" expanded="True">
+                <Node name="MapPanel" expanded="True" />
+                <Node name="MarkerManager.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

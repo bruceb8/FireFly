@@ -10,22 +10,32 @@ using WebSocketSharp;
  * This script grabs the settings saved in the player prefs and uses those to instantiate 
  * a new socket connection
  */
+public class Current_Status
+{
+    public string id;
+    public float lat;
+    public float lon;
+    public float alt;
+    public float temp;
+    public string time;
+    public float light;
+    public float co;
+}
 
-public class WSNetworkManager : MonoBehaviour {
-
+public class WSNetworkManager : MonoBehaviour
+{
     WebSocket ws;
-    public GameObject terminal;
+  
     string wsAddress;
 
     public static string ip = "localhost";
     public static string port = "8080";
-
     public static bool connected = false;
 
-    // Instruction queues for each data type
-    public static Queue<string> FFQueue = new Queue<string>();
-    public static Queue<string> BNQueue = new Queue<string>();
-    public static Queue<string> TMQueue = new Queue<string>();
+
+    public List<Device_Status> firefighters = new List<Device_Status>();
+    public List<Device_Status> beacons = new List<Device_Status>();
+    public List<Device_Status> drones = new List<Device_Status>();
 
     private string last = "";
 
@@ -35,62 +45,88 @@ public class WSNetworkManager : MonoBehaviour {
         public string body;
     }
 
-	// Use this for initialization of the WebSocket
-	void Start () {
+    // Use this for initialization of the WebSocket
+    void Start(){
         ip = PlayerPrefs.GetString("ServerIP");
         port = PlayerPrefs.GetString("ServerPort");
         wsAddress = "ws://" + ip + ":" + port;//this is the address for the javascript node server...
-        terminal.GetComponent<TerminalController>().TerminalColorPrint("Connecting to " + wsAddress, Color.yellow);
 
         ws = new WebSocket(wsAddress);//create new websocket with address from player prefs
+      
         ws.Connect();//Establish a websocket connection to the server.
 
-		//Functions are defined below and are set as function pointers of the Websocket object
+        //Functions are defined below and are set as function pointers of the Websocket object
         ws.OnOpen += Ws_OnOpen;
         ws.OnMessage += Ws_OnMessage;
         ws.OnClose += Ws_OnClose;
         ws.OnError += Ws_OnError;
-	}
-
-    private void Ws_OnError(object sender, ErrorEventArgs e)
-    {
-        terminal.GetComponent<TerminalController>().TerminalColorPrint("WebSocket Error", Color.red);
-        terminal.GetComponent<TerminalController>().TerminalColorPrint(e.Message, Color.red);
     }
+
+    private void Ws_OnError(object sender, ErrorEventArgs e){}
 
     private void Ws_OnClose(object sender, CloseEventArgs e)
     {
         connected = false;
-        terminal.GetComponent<TerminalController>().TerminalColorPrint("Connection to Server Closed", Color.green);
     }
 
     private void Ws_OnMessage(object sender, MessageEventArgs e)
     {
+
         connected = true;
         WebMessage message = JsonUtility.FromJson<WebMessage>(e.Data);
+
         last = e.Data;
-//		Debug.Log (message.body);
-        if(message.type == "ff" || message.type == "FF")
+
+        Current_Status incoming_device = JsonUtility.FromJson<Current_Status>(message.body);
+
+        Device_Status temp_device = new Device_Status(incoming_device);
+        int index = -1;
+        if (message.type == "ff" || message.type == "FF")
         {
-            FFQueue.Enqueue(message.body);
+
+            index = findDeviceByID(temp_device, 1);
+            if (index >= 0)
+            {
+                firefighters[index].updateStatus(temp_device);
+            }
+            else
+            {
+                firefighters.Add(temp_device);
+            }
         }
-
-        if(message.type == "bn" || message.type == "BN")
+        else if (message.type == "bn" || message.type == "BN")
         {
-            BNQueue.Enqueue(message.body);
+            index = findDeviceByID(temp_device, 2);
+            if (index >= 0)
+            {
+                beacons[index].updateStatus(temp_device);
+            }
+            else
+            {
+                beacons.Add(temp_device);
+            }
 
         }
-
-        if(message.type == "terminal")
+        else if (message.type == "dn" || message.type == "DN")
         {
-            TMQueue.Enqueue(message.body);
+            index = findDeviceByID(temp_device, 3);
+            if (index >= 0)
+            {
+                drones[index].updateStatus(temp_device);
+            }
+            else
+            {
+                drones.Add(temp_device);
+            }
+        }
+        else if (message.type == "terminal")
+        {
         }
     }
 
     private void Ws_OnOpen(object sender, System.EventArgs e)
     {
         connected = true;
-        terminal.GetComponent<TerminalController>().TerminalColorPrint("Connected Successfully", Color.green);
     }
 
     private void OnApplicationQuit()
@@ -99,13 +135,40 @@ public class WSNetworkManager : MonoBehaviour {
         ws.Close();
     }
 
-    // Update is called once per frame
-    void Update () {
-        if (UIFunctions.closeScene)
+    //return index if found else -1
+    private int findDeviceByID(Device_Status input, int type_of_device)
+    {
+        int index = 0;
+
+        switch (type_of_device)
         {
-            connected = false;
-            ws.Close();
-            UIFunctions.closeScene = false;
+            case 1:
+                foreach (Device_Status ff in firefighters)
+                {
+                    if (input == ff)
+                        return index;
+                    index++;
+                }
+                break;
+            case 2:
+                foreach (Device_Status bn in beacons)
+                {
+                    if (input == bn)
+                        return index;
+                    index++;
+                }
+                break;
+            case 3:
+                foreach (Device_Status dn in drones)
+                {
+                    if (input == dn)
+                        return index;
+                    index++;
+                }
+                break;
         }
-	}
+        return -1;
+    }
+    // Update is called once per frame
+    void Update(){}
 }

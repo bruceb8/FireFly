@@ -1,9 +1,9 @@
 ﻿<Properties StartupConfiguration="{E9466C38-096A-0965-85B6-05C0FB580B85}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Visualizer/MapPanel/Device_Status.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Visualizer/MarkerManager.cs">
     <Files>
-      <File FileName="Assets/Visualizer/MapPanel/Device_Status.cs" Line="67" Column="1" />
-      <File FileName="Assets/Visualizer/WSNetworkManager.cs" Line="96" Column="61" />
-      <File FileName="Assets/Visualizer/MarkerManager.cs" Line="42" Column="21" />
+      <File FileName="Assets/Visualizer/MapPanel/Device_Status.cs" Line="16" Column="23" />
+      <File FileName="Assets/Visualizer/WSNetworkManager.cs" Line="148" Column="9" />
+      <File FileName="Assets/Visualizer/MarkerManager.cs" Line="111" Column="59" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -11,9 +11,8 @@
           <Node name="firefly" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Visualizer" expanded="True">
-                <Node name="MapPanel" expanded="True">
-                  <Node name="Device_Status.cs" selected="True" />
-                </Node>
+                <Node name="MapPanel" expanded="True" />
+                <Node name="MarkerManager.cs" selected="True" />
               </Node>
             </Node>
           </Node>

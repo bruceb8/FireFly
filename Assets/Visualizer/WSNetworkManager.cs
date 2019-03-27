@@ -24,14 +24,12 @@ public class Current_Status
 
 public class WSNetworkManager : MonoBehaviour
 {
-
-
     WebSocket ws;
+  
     string wsAddress;
 
     public static string ip = "localhost";
     public static string port = "8080";
-
     public static bool connected = false;
 
 
@@ -47,15 +45,14 @@ public class WSNetworkManager : MonoBehaviour
         public string body;
     }
 
-
     // Use this for initialization of the WebSocket
-    void Start()
-    {
+    void Start(){
         ip = PlayerPrefs.GetString("ServerIP");
         port = PlayerPrefs.GetString("ServerPort");
         wsAddress = "ws://" + ip + ":" + port;//this is the address for the javascript node server...
 
         ws = new WebSocket(wsAddress);//create new websocket with address from player prefs
+      
         ws.Connect();//Establish a websocket connection to the server.
 
         //Functions are defined below and are set as function pointers of the Websocket object
@@ -65,10 +62,7 @@ public class WSNetworkManager : MonoBehaviour
         ws.OnError += Ws_OnError;
     }
 
-    private void Ws_OnError(object sender, ErrorEventArgs e)
-    {
-
-    }
+    private void Ws_OnError(object sender, ErrorEventArgs e){}
 
     private void Ws_OnClose(object sender, CloseEventArgs e)
     {
@@ -176,8 +170,5 @@ public class WSNetworkManager : MonoBehaviour
         return -1;
     }
     // Update is called once per frame
-    void Update()
-    {
-
-    }
+    void Update(){}
 }

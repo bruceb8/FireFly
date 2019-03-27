@@ -53,7 +53,8 @@ public class MarkerManager : MonoBehaviour
         {
             if (!ff.isMarker)
             {
-                m_manager.Create(new Vector2(ff.lon, ff.lat), changeTextureColor(FF_texture), ff.id);
+                OnlineMapsMarker temp = m_manager.Create(new Vector2(ff.lon, ff.lat), changeTextureColor(FF_texture), ff.id);
+                temp.scale = 0.05f;
                 ff.isMarker = true;
             }
             else
@@ -65,7 +66,8 @@ public class MarkerManager : MonoBehaviour
         {
             if (!bn.isMarker)
             {
-                m_manager.Create(new Vector2(bn.lon, bn.lat), BN_texture, bn.id);
+                OnlineMapsMarker temp = m_manager.Create(new Vector2(bn.lon, bn.lat), BN_texture, bn.id);
+                temp.scale = 0.05f;
                 bn.isMarker = true;
             }
             else
@@ -77,7 +79,8 @@ public class MarkerManager : MonoBehaviour
         {
             if (!dn.isMarker)
             {
-                m_manager.Create(new Vector2(dn.lon, dn.lat), changeTextureColor(DN_texture), dn.id);
+                OnlineMapsMarker temp = m_manager.Create(new Vector2(dn.lon, dn.lat), changeTextureColor(DN_texture), dn.id);
+                temp.scale = 0.05f;
                 dn.isMarker = true;
             }
             else

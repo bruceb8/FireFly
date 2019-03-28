@@ -4,6 +4,11 @@
 -langversion:4
 -out:"Temp/Assembly-CSharp.dll"
 -nostdlib
+-r:"Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll"
+-r:"Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll"
+-r:"Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll"
+-r:"Library/ScriptAssemblies/Unity.TextMeshPro.dll"
+-r:"Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll"
 -r:"/Applications/Unity/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll"
 -r:"/Applications/Unity/Unity.app/Contents/Managed/UnityEngine/UnityEngine.AIModule.dll"
 -r:"/Applications/Unity/Unity.app/Contents/Managed/UnityEngine/UnityEngine.ARModule.dll"
@@ -65,11 +70,6 @@
 -r:"/Applications/Unity/Unity.app/Contents/Managed/UnityEngine/UnityEngine.XRModule.dll"
 -r:"/Applications/Unity/Unity.app/Contents/Managed/UnityEditor.dll"
 -r:"/Applications/Unity/Unity.app/Contents/Managed/Unity.Locator.dll"
--r:"Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll"
--r:"Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll"
--r:"Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll"
--r:"Library/ScriptAssemblies/Unity.TextMeshPro.dll"
--r:"Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll"
 -r:"/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll"
 -r:"/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll"
 -r:"/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll"
@@ -77,9 +77,11 @@
 -r:"/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll"
 -r:"Assets/Mapbox/Core/Plugins/ThirdParty/Mapbox.Json/Net35/Mapbox.Json.dll"
 -r:"Assets/Mapbox/Core/Plugins/ThirdParty/Mapbox.IO.Compression/net35/Mapbox.IO.Compression.dll"
--r:"/Users/ipalabs/Documents/unityFire/firefly/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll"
--r:"/Users/ipalabs/Documents/unityFire/firefly/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll"
--r:"/Users/ipalabs/Documents/unityFire/firefly/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll"
+-r:"/Users/alexboyle/Documents/School/UWT/SeniorProj/firefly/Library/PackageCache/com.unity.ads@2.0.8/UnityEngine.Advertisements.dll"
+-r:"/Users/alexboyle/Documents/School/UWT/SeniorProj/firefly/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll"
+-r:"/Users/alexboyle/Documents/School/UWT/SeniorProj/firefly/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll"
+-r:"/Users/alexboyle/Documents/School/UWT/SeniorProj/firefly/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll"
+-r:"/Users/alexboyle/Documents/School/UWT/SeniorProj/firefly/Library/PackageCache/com.unity.purchasing@2.0.3/UnityEngine.Purchasing.dll"
 -r:"/Applications/Unity/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll"
 -r:"/Applications/Unity/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Common.dll"
 -r:"/Applications/Unity/Unity.app/Contents/MonoBleedingEdge/lib/mono/unity/mscorlib.dll"
@@ -102,7 +104,7 @@
 -define:UNITY_2018_1_OR_NEWER
 -define:UNITY_2018_2_OR_NEWER
 -define:UNITY_2018_3_OR_NEWER
--define:UNITY_2018_3_10
+-define:UNITY_2018_3_0
 -define:UNITY_2018_3
 -define:UNITY_2018
 -define:UNITY_INCLUDE_TESTS

@@ -1,19 +1,26 @@
 ﻿<Properties StartupConfiguration="{E9466C38-096A-0965-85B6-05C0FB580B85}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Visualizer/WSNetworkManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/UIFunctions.cs">
     <Files>
       <File FileName="Assets/Visualizer/MapPanel/Device_Status.cs" Line="16" Column="23" />
       <File FileName="Assets/Visualizer/WSNetworkManager.cs" Line="148" Column="1" />
-      <File FileName="Assets/Visualizer/MarkerManager.cs" Line="111" Column="59" />
+      <File FileName="Assets/Visualizer/MarkerManager.cs" Line="17" Column="8" />
+      <File FileName="Assets/UIFunctions.cs" Line="25" Column="37" />
+      <File FileName="Assets/Menu/StartVisualizer.cs" Line="10" Column="1" />
+      <File FileName="Assets/APIs/websocket-sharp/WebSocket.cs" Line="235" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="firefly" expanded="True">
             <Node name="Assets" expanded="True">
+              <Node name="APIs" expanded="True">
+                <Node name="websocket-sharp" expanded="True" />
+              </Node>
+              <Node name="Menu" expanded="True" />
               <Node name="Visualizer" expanded="True">
                 <Node name="MapPanel" expanded="True" />
-                <Node name="MarkerManager.cs" selected="True" />
               </Node>
+              <Node name="UIFunctions.cs" selected="True" />
             </Node>
           </Node>
         </State>

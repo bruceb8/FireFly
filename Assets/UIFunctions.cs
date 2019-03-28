@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using System;
 public class UIFunctions : MonoBehaviour
 {
 
@@ -18,7 +18,7 @@ public class UIFunctions : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update(){}
+    void Update() { }
 
     public void BackToMenu()
     {
@@ -26,8 +26,8 @@ public class UIFunctions : MonoBehaviour
     }
     public void CenterMapOnDevices()
     {
-        if( m_manager.Count > 0) m.SetPosition(getAvgLon(), getAvgLat());
-     
+        if (m_manager.Count > 0) m.SetPosition(getAvgLon(), getAvgLat());
+
     }
     private double getAvgLon()
     {
@@ -46,5 +46,57 @@ public class UIFunctions : MonoBehaviour
             output += marker.position.y;
         }
         return output / m_manager.Count;
+    }
+    public void ToggleBeacons()
+    {
+        foreach (OnlineMapsMarker marker in m_manager.items)
+        {
+            string markerID = marker.label;
+            StringComparison something = StringComparison.InvariantCulture;
+            if (markerID.StartsWith("BN:", something))
+            {
+                marker.enabled = !marker.enabled;
+            }
+        }
+    }
+
+    public void ToggleDrones()
+    {
+        foreach (OnlineMapsMarker marker in m_manager.items)
+        {
+            string markerID = marker.label;
+            StringComparison something = StringComparison.InvariantCulture;
+            if (markerID.StartsWith("DN:", something))
+            {
+                marker.enabled = !marker.enabled;
+            }
+        }
+    }
+
+    public void ToggleFireFighters()
+    {
+        foreach (OnlineMapsMarker marker in m_manager.items)
+        {
+            string markerID = marker.label;
+            StringComparison something = StringComparison.InvariantCulture;
+            if (markerID.StartsWith("FF:", something))
+            {
+                marker.enabled = !marker.enabled;
+            }
+        }
+    }
+
+    void CenterOnDevice(string id)
+    {
+        foreach (OnlineMapsMarker marker in m_manager.items)
+        {
+            string[] markerID = marker.label.Split(':');
+            if (id == markerID[1])
+            {
+                m.SetPosition(marker.position.x, marker.position.y);
+                return;
+            }
+
+        }
     }
 }

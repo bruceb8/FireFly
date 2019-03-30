@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
 public class UIFunctions : MonoBehaviour
-{
+{  
 
     public GameObject map;
     private OnlineMaps m;
@@ -86,7 +86,7 @@ public class UIFunctions : MonoBehaviour
         }
     }
 
-    void CenterOnDevice(string id)
+    public void CenterOnDevice(string id)
     {
         foreach (OnlineMapsMarker marker in m_manager.items)
         {
@@ -99,4 +99,5 @@ public class UIFunctions : MonoBehaviour
 
         }
     }
+    
 }

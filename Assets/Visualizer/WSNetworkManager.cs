@@ -80,6 +80,8 @@ public class WSNetworkManager : MonoBehaviour
         Current_Status incoming_device = JsonUtility.FromJson<Current_Status>(message.body);
 
         Device_Status temp_device = new Device_Status(incoming_device);
+
+        Debug.Log(message.body);
         int index = -1;
         if (message.type == "ff" || message.type == "FF")
         {

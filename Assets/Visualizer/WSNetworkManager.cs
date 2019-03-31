@@ -81,7 +81,7 @@ public class WSNetworkManager : MonoBehaviour
 
         Device_Status temp_device = new Device_Status(incoming_device);
 
-        Debug.Log(message.body);
+        //Debug.Log(message.body);
         int index = -1;
         if (message.type == "ff" || message.type == "FF")
         {
@@ -90,9 +90,11 @@ public class WSNetworkManager : MonoBehaviour
             if (index >= 0)
             {
                 firefighters[index].updateStatus(temp_device);
+
             }
             else
             {
+                temp_device.position_log.Add(new Vector2(temp_device.lon, temp_device.lat));
                 firefighters.Add(temp_device);
             }
         }
@@ -105,6 +107,8 @@ public class WSNetworkManager : MonoBehaviour
             }
             else
             {
+                temp_device.position_log.Add(new Vector2(temp_device.lon, temp_device.lat));
+
                 beacons.Add(temp_device);
             }
 
@@ -118,6 +122,8 @@ public class WSNetworkManager : MonoBehaviour
             }
             else
             {
+                temp_device.position_log.Add(new Vector2(temp_device.lon, temp_device.lat));
+
                 drones.Add(temp_device);
             }
         }
@@ -137,6 +143,39 @@ public class WSNetworkManager : MonoBehaviour
         ws.Close();
     }
 
+    public Device_Status GetDevice(string input, string type_of_device)
+    {
+        int index = 0;
+
+        switch (type_of_device)
+        {
+            case "FF":
+                foreach (Device_Status ff in firefighters)
+                {
+                    if (input == ff.id)
+                        return ff;
+                    index++;
+                }
+                break;
+            case "BN":
+                foreach (Device_Status bn in beacons)
+                {
+                    if (input == bn.id)
+                        return bn;
+                    index++;
+                }
+                break;
+            case "DN":
+                foreach (Device_Status dn in drones)
+                {
+                    if (input == dn.id)
+                        return dn;
+                    index++;
+                }
+                break;
+        }
+        return null;
+    }
     //return index if found else -1
     private int findDeviceByID(Device_Status input, int type_of_device)
     {
@@ -164,6 +203,39 @@ public class WSNetworkManager : MonoBehaviour
                 foreach (Device_Status dn in drones)
                 {
                     if (input == dn)
+                        return index;
+                    index++;
+                }
+                break;
+        }
+        return -1;
+    }
+    public int findDeviceByID(string input, string type_of_device)
+    {
+        int index = 0;
+
+        switch (type_of_device)
+        {
+            case "FF":
+                foreach (Device_Status ff in firefighters)
+                {
+                    if (input == ff.id)
+                        return index;
+                    index++;
+                }
+                break;
+            case "BN":
+                foreach (Device_Status bn in beacons)
+                {
+                    if (input == bn.id)
+                        return index;
+                    index++;
+                }
+                break;
+            case "DN":
+                foreach (Device_Status dn in drones)
+                {
+                    if (input == dn.id)
                         return index;
                     index++;
                 }

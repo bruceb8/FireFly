@@ -639,10 +639,9 @@
     <Compile Include="Assets\Mapbox\Unity\Utilities\VectorExtensions.cs" />
     <Compile Include="Assets\Menu\SettingsController.cs" />
     <Compile Include="Assets\Menu\StartVisualizer.cs" />
-    <Compile Include="Assets\UI_Functions.cs" />
-    <Compile Include="Assets\UIFunctions.cs" />
     <Compile Include="Assets\Visualizer\MapPanel\Device_Status.cs" />
     <Compile Include="Assets\Visualizer\MarkerManager.cs" />
+    <Compile Include="Assets\Visualizer\UIFunctions.cs" />
     <Compile Include="Assets\Visualizer\WSNetworkManager.cs" />
     <None Include="Assets\Resources\Mapbox\MapboxConfiguration.txt" />
     <None Include="Assets\Mapbox\Shaders\RasterWithTransparencyShader.shader" />

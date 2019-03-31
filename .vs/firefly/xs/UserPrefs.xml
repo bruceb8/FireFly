@@ -1,9 +1,10 @@
 ﻿<Properties StartupConfiguration="{E9466C38-096A-0965-85B6-05C0FB580B85}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Visualizer/WSNetworkManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Visualizer/UIFunctions.cs">
     <Files>
-      <File FileName="Assets/Visualizer/MarkerManager.cs" Line="117" Column="75" />
-      <File FileName="Assets/UIFunctions.cs" Line="4" Column="31" />
-      <File FileName="Assets/Visualizer/WSNetworkManager.cs" Line="148" Column="1" />
+      <File FileName="Assets/Visualizer/MarkerManager.cs" Line="100" Column="36" />
+      <File FileName="Assets/Visualizer/WSNetworkManager.cs" Line="111" Column="17" />
+      <File FileName="Assets/Visualizer/UIFunctions.cs" Line="129" Column="82" />
+      <File FileName="Assets/Visualizer/MapPanel/Device_Status.cs" Line="28" Column="29" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -15,13 +16,19 @@
               </Node>
               <Node name="Infinity Code" expanded="True">
                 <Node name="Online maps" expanded="True">
-                  <Node name="Examples (API usage)" expanded="True" />
+                  <Node name="Examples" expanded="True">
+                    <Node name="Scripts" expanded="True" />
+                  </Node>
+                  <Node name="Examples (API usage)" expanded="True">
+                    <Node name="NGUI" expanded="True" />
+                    <Node name="uGUI" expanded="True" />
+                  </Node>
                 </Node>
               </Node>
               <Node name="Menu" expanded="True" />
               <Node name="Visualizer" expanded="True">
                 <Node name="MapPanel" expanded="True" />
-                <Node name="WSNetworkManager.cs" selected="True" />
+                <Node name="UIFunctions.cs" selected="True" />
               </Node>
             </Node>
           </Node>

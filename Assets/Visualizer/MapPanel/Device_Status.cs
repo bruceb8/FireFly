@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public struct DevicePosition{
-	float lat;
-	float lon;
+	public double x;
+	public double y;
 
-	public DevicePosition(float input_lat, float input_lon){
-		lat = input_lat;
-		lon = input_lon;
+	public DevicePosition(double input_x, double input_y){
+		x = input_x;
+		y = input_y;
 	}
 }
 
@@ -26,7 +25,9 @@ public class Device_Status{
 	public float light;
 	public float co;
 
-	public List <DevicePosition> position_log;
+    //public List<DevicePosition> position_log = new List<DevicePosition>();
+    public List<Vector2> position_log = new List<Vector2>();
+    public Color32 marker_color;
 	public bool isMarker = false;
 
 

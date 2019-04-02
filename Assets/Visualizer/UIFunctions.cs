@@ -13,13 +13,16 @@ public class UIFunctions : MonoBehaviour
     public OnlineMapsDrawingLine line_drawer;
     public MarkerManager local_m_manager;
 
+    public bool all_paths_shown;
     public bool path_is_drawn;
+
     // Start is called before the first frame update
     void Start()
     {
         m = map.GetComponent<OnlineMaps>();
         m_manager = map.GetComponent<OnlineMapsMarkerManager>();
         path_is_drawn = false;
+        all_paths_shown = false;
     }
 
     // Update is called once per frame
@@ -38,7 +41,6 @@ public class UIFunctions : MonoBehaviour
             m.SetPosition(getAvgLon(), getAvgLat());
             m.zoom = CalculateNewMapZoom();
         }
-
     }
     private int CalculateNewMapZoom()
     {
@@ -157,10 +159,32 @@ public class UIFunctions : MonoBehaviour
                 }
             }
         }
-        //else
-        //{
-           
-        //    OnlineMapsDrawingElementManager.RemoveItem(line_drawer);
-        //}
+
+    }
+
+    public void ShowAllPaths()
+    {
+        all_paths_shown = !all_paths_shown;
+        if (all_paths_shown)
+        {
+            foreach (Device_Status FF in WSManager.firefighters)
+            {
+                OnlineMapsDrawingElementManager.AddItem(new OnlineMapsDrawingLine(FF.position_log, FF.marker_color, 5));
+            }
+            foreach (Device_Status BN in WSManager.beacons)
+            {
+                OnlineMapsDrawingElementManager.AddItem(new OnlineMapsDrawingLine(BN.position_log, BN.marker_color, 5));
+
+            }
+            foreach (Device_Status DN in WSManager.drones)
+            {
+                OnlineMapsDrawingElementManager.AddItem(new OnlineMapsDrawingLine(DN.position_log, DN.marker_color, 5));
+
+            }
+        }
+        else
+        {
+            OnlineMapsDrawingElementManager.RemoveAllItems();
+        }
     }
 }

@@ -25,30 +25,34 @@ public class MarkerManager : MonoBehaviour
         m = map.GetComponent<OnlineMaps>();
         m_manager = map.GetComponent<OnlineMapsMarkerManager>();
         //load textures for devices
-        byte[] FileData;
+        //byte[] FileData;
 
-        FileData = File.ReadAllBytes("Assets/Resources/Square2.png");//firefighter texture
-        FF_texture = new Texture2D(2, 2);           // Create new "empty" texture
-        FF_texture.LoadImage(FileData);
+        //FileData = File.ReadAllBytes("Assets/Resources/Square2.png");//firefighter texture
+        //FF_texture = new Texture2D(2, 2);           // Create new "empty" texture
+        //FF_texture.LoadImage(FileData);
 
-        byte[] FileData1;
+        //byte[] FileData1;
 
-        FileData1 = File.ReadAllBytes("Assets/Resources/circle.png");//firefighter texture
-        DN_texture = new Texture2D(2, 2);           // Create new "empty" texture
-        DN_texture.LoadImage(FileData1);
+        //FileData1 = File.ReadAllBytes("Assets/Resources/circle.png");//firefighter texture
+        //DN_texture = new Texture2D(2, 2);           // Create new "empty" texture
+        //DN_texture.LoadImage(FileData1);
 
-        byte[] FileData2;
+        //byte[] FileData2;
 
-        FileData2 = File.ReadAllBytes("Assets/Resources/triangle.png");//firefighter texture
-        BN_texture = new Texture2D(2, 2);           // Create new "empty" texture
-        BN_texture.LoadImage(FileData2);
+        //FileData2 = File.ReadAllBytes("Assets/Resources/triangle.png");//firefighter texture
+        //BN_texture = new Texture2D(2, 2);           // Create new "empty" texture
+        //BN_texture.LoadImage(FileData2);
 
-        byte[] FileData3;
+        //byte[] FileData3;
 
-        FileData3 = File.ReadAllBytes("Assets/Resources/target.png");//firefighter texture
-        Currently_Selected = new Texture2D(2, 2);           // Create new "empty" texture
-        Currently_Selected.LoadImage(FileData3);
+        //FileData3 = File.ReadAllBytes("Assets/Resources/target.png");//firefighter texture
+        //Currently_Selected = new Texture2D(2, 2);           // Create new "empty" texture
+        //Currently_Selected.LoadImage(FileData3);
 
+        FF_texture = Resources.Load<Texture2D>("Square2");
+        BN_texture = Resources.Load<Texture2D>("triangle");
+        DN_texture = Resources.Load<Texture2D>("circle");
+        Currently_Selected = Resources.Load<Texture2D>("target");
         current_target_marker = null;
         current_target_marker_status = null;
 

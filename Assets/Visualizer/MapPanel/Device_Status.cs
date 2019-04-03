@@ -59,6 +59,7 @@ public class Device_Status{
 
 	public static bool operator == (Device_Status a, Device_Status b){
 		if (a.id == b.id) return true;
+
 		return false;
 
 	}
@@ -67,6 +68,17 @@ public class Device_Status{
 		return false;
 
 	}
+
+    public string toString()
+    {
+        return "ID: " + this.id
+            + "\nType: " + this.type
+            + "\nLatitude: " + this.lat
+            + "\nLongitdude: " + this.lon
+            + "\nAltitdude: " + this.alt
+            + "\nTemperature: " + this.temp
+            + "\nCO: " + this.co;
+    }
     //public bool Equals(Object obj)
     //{
     //    Device_Status t = obj as Device_Status;

@@ -140,6 +140,7 @@
     <Compile Include="Assets\APIs\websocket-sharp\WebSocketException.cs" />
     <Compile Include="Assets\APIs\websocket-sharp\WebSocketFrame.cs" />
     <Compile Include="Assets\APIs\websocket-sharp\WebSocketState.cs" />
+    <Compile Include="Assets\FocusWindowController.cs" />
     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\AdjustTilesetMapToScreenExample.cs" />
     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\AMapSearchExample.cs" />
     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\BingMapsElevationsExample.cs" />

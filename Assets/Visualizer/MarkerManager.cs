@@ -11,7 +11,7 @@ public class MarkerManager : MonoBehaviour
     private OnlineMapsMarkerManager m_manager;
     public WSNetworkManager WSManager;
     private Texture2D FF_texture, BN_texture, DN_texture, Currently_Selected;
-
+    public FocusWindowController FocusWindow;
     public UIFunctions UI;
 
     public OnlineMapsMarker current_target_marker;
@@ -53,10 +53,8 @@ public class MarkerManager : MonoBehaviour
         BN_texture = Resources.Load<Texture2D>("triangle");
         DN_texture = Resources.Load<Texture2D>("circle");
         Currently_Selected = Resources.Load<Texture2D>("target");
-        current_target_marker = null;
-        current_target_marker_status = null;
 
-        current_target_old_texture = null;
+      
 }
 
     // Update is called once per frame
@@ -137,14 +135,13 @@ public class MarkerManager : MonoBehaviour
         }
     }
 
-   
-
+  
 
     //click on marker event
     private void OnMarkerClick(OnlineMapsMarkerBase marker)
     {
 
-        if (current_target_marker == null) //nothing is currently selected...
+        if (current_target_marker == null || current_target_marker.label == "") //nothing is currently selected...
         {
             OnlineMapsMarker next_marker = getMarker(marker.label);
             current_target_old_texture = CopyTexture(next_marker.texture);
@@ -153,11 +150,10 @@ public class MarkerManager : MonoBehaviour
             next_marker.scale = next_marker.scale * 2;
 
             string[] tempstr = next_marker.label.Split(':');
-            current_target_marker_color = WSManager.GetDevice(tempstr[1], tempstr[0]).marker_color;
+            current_target_marker_status = WSManager.GetDevice(tempstr[1], tempstr[0]);
+            current_target_marker_color = current_target_marker_status.marker_color;
 
             current_target_marker = next_marker;
-
-
         }
         else //something is currently selected
         {
@@ -172,18 +168,16 @@ public class MarkerManager : MonoBehaviour
 
                 OnlineMapsMarker next_marker = getMarker(marker.label);
                 string[] tempstr = next_marker.label.Split(':');
-                current_target_marker_color = WSManager.GetDevice(tempstr[1], tempstr[0]).marker_color;
+                current_target_marker_status = WSManager.GetDevice(tempstr[1], tempstr[0]);
+                current_target_marker_color = current_target_marker_status.marker_color;
+
                 current_target_old_texture = CopyTexture(next_marker.texture);
                 next_marker.texture = OverlayCurrentTarget(next_marker.texture); //add target texture overlay
 
                 next_marker.scale = next_marker.scale * 2;
 
-
-
                 current_target_marker = next_marker;
 
-
-               
             }
             else //toggle off current selection meaning that the previous target is the same as the one we just clicked on.
             {
@@ -197,10 +191,7 @@ public class MarkerManager : MonoBehaviour
             }
             UI.ShowPath();
         }
-
-
-        //show on window
-
+        FocusWindow.updateText(current_target_marker_status);
     }
     private OnlineMapsMarker getMarker(string label)
     {

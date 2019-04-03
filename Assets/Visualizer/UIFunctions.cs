@@ -142,7 +142,7 @@ public class UIFunctions : MonoBehaviour
     }
     public void ShowPath()
     {
-        if(line_drawer != null) OnlineMapsDrawingElementManager.RemoveItem(line_drawer);
+        //if(line_drawer != null) OnlineMapsDrawingElementManager.RemoveItem(line_drawer);
         if (!path_is_drawn)
         {
             if (local_m_manager.current_target_marker != null)
@@ -158,6 +158,10 @@ public class UIFunctions : MonoBehaviour
                  
                 }
             }
+        }
+        else
+        {
+            OnlineMapsDrawingElementManager.RemoveItem(line_drawer);
         }
 
     }

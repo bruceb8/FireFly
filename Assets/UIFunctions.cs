@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Networking;
 
 public class UIFunctions : MonoBehaviour
 {
@@ -11,10 +12,13 @@ public class UIFunctions : MonoBehaviour
     private OnlineMapsMarkerManager m_manager;
     public WSNetworkManager WSManager;
     // Start is called before the first frame update
+    
+
     void Start()
     {
         m = map.GetComponent<OnlineMaps>();
         m_manager = map.GetComponent<OnlineMapsMarkerManager>();
+
     }
 
     // Update is called once per frame

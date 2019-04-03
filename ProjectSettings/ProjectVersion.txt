@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 <<<<<<< refs/remotes/origin/bruce
 m_EditorVersion: 2017.4.1f1
 =======
 m_EditorVersion: 2018.3.10f1
 >>>>>>> local
+=======
+<<<<<<< Updated upstream
+m_EditorVersion: 2017.4.1f1
+=======
+m_EditorVersion: 2018.3.10f1
+>>>>>>> Stashed changes
+>>>>>>> d9d15b490ff97054c58f815d616bdba7a212e8d7

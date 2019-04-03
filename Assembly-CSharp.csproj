@@ -9,24 +9,40 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
+<<<<<<< Updated upstream
     <ProjectGuid>{1095D8E9-05CD-140F-0E97-629C71ED1CE8}</ProjectGuid>
+=======
+    <ProjectGuid>{E9466C38-096A-0965-85B6-05C0FB580B85}</ProjectGuid>
+>>>>>>> Stashed changes
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+<<<<<<< Updated upstream
     <BaseDirectory>Assets</BaseDirectory>
+=======
+    <BaseDirectory>.</BaseDirectory>
+>>>>>>> Stashed changes
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\bin\Debug\</OutputPath>
+<<<<<<< Updated upstream
     <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2017_4_1;UNITY_2017_4;UNITY_2017;UNITY_ANALYTICS;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_GRID;ENABLE_TILEMAP;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;ENABLE_SPRITE_MASKING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;PLATFORM_SUPPORTS_MONO;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_VIDEO;ENABLE_RMGUI;ENABLE_PACKMAN;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_STYLE_SHEETS;ENABLE_LOCALIZATION;ENABLE_RUNTIME_GI;ENABLE_SUBSTANCE;ENABLE_GAMECENTER;ENABLE_NETWORK;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_IOS_NATIVE_CRASH_REPORTING;PLAYERCONNECTION_LISTENS_FIXED_PORT;DEBUGGER_LISTENS_FIXED_PORT;PLATFORM_SUPPORTS_ADS_ID;SUPPORT_ENVIRONMENT_VARIABLES;PLATFORM_SUPPORTS_PROFILER;PLATFORM_HAS_NO_SUPPORT_FOR_BUCKET_ALLOCATOR;STRICTCPP_NEW_DELETE_SIGNATURES;HAS_NEON_SKINNIG;UNITY_GFX_USE_PLATFORM_VSYNC;UNITY_INPUT_SIMULATE_EVENTS;PLATFORM_ALWAYS_USES_STDOUT_FOR_LOG;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_VR;ENABLE_AR;ENABLE_SPATIALTRACKING;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;PLATFORM_IOS;UNITY_IOS;PLATFORM_IPHONE;UNITY_IPHONE;UNITY_IPHONE_API;SUPPORT_MULTIPLE_DISPLAYS;ENABLE_IL2CPP;NET_2_0_SUBSET;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_OSX;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE;ENABLE_IOS_ON_DEMAND_RESOURCES;ENABLE_IOS_APP_SLICING;UNITY_HAS_GOOGLEVR;ENABLE_MONO</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+=======
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_3_10;UNITY_2018_3;UNITY_2018;UNITY_INCLUDE_TESTS;UNITY_ANALYTICS;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITES;ENABLE_GRID;ENABLE_TILEMAP;ENABLE_TERRAIN;ENABLE_TEXTURE_STREAMING;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;PLATFORM_SUPPORTS_MONO;INCLUDE_PUBNUB;ENABLE_VIDEO;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_LOCALIZATION;ENABLE_RUNTIME_GI;ENABLE_SUBSTANCE;ENABLE_GAMECENTER;ENABLE_NETWORK;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_IOS_NATIVE_CRASH_REPORTING;ENABLE_IOS_ON_DEMAND_RESOURCES;ENABLE_IOS_APP_SLICING;PLAYERCONNECTION_LISTENS_FIXED_PORT;DEBUGGER_LISTENS_FIXED_PORT;PLATFORM_SUPPORTS_ADS_ID;SUPPORT_ENVIRONMENT_VARIABLES;PLATFORM_SUPPORTS_PROFILER;PLATFORM_HAS_NO_SUPPORT_FOR_BUCKET_ALLOCATOR;STRICTCPP_NEW_DELETE_SIGNATURES;HAS_NEON_SKINNING;UNITY_GFX_USE_PLATFORM_VSYNC;UNITY_INPUT_SIMULATE_EVENTS;PLATFORM_ALWAYS_USES_STDOUT_FOR_LOG;ENABLE_CRUNCH_TEXTURE_COMPRESSION;UNITY_ASTC_ONLY_DECOMPRESS;SUPPORTS_GRANULAR_MODULE_REGISTRATION;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;PLATFORM_IOS;UNITY_IOS;PLATFORM_IPHONE;UNITY_IPHONE;UNITY_IPHONE_API;SUPPORT_MULTIPLE_DISPLAYS;ENABLE_VR;ENABLE_AR;UNITY_HAS_GOOGLEVR;ENABLE_SPATIALTRACKING;ENABLE_MONO;NET_2_0_SUBSET;NET_LEGACY;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0169</NoWarn>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+>>>>>>> Stashed changes
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -35,6 +51,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
+<<<<<<< Updated upstream
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
@@ -232,6 +249,26 @@
      <Compile Include="Assets\APIs\Infinity Code\Online maps\Scripts\XML\OnlineMapsXML.cs" />
      <Compile Include="Assets\APIs\Infinity Code\Online maps\Scripts\XML\OnlineMapsXMLList.cs" />
      <Compile Include="Assets\APIs\Infinity Code\Online maps\Scripts\XML\OnlineMapsXMLNamespaceManager.cs" />
+=======
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoConfig>true</NoConfig>
+    <NoStdLib>true</NoStdLib>
+    <AddAdditionalExplicitAssemblyReferences>false</AddAdditionalExplicitAssemblyReferences>
+    <ImplicitlyExpandNETStandardFacades>false</ImplicitlyExpandNETStandardFacades>
+    <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="UnityEngine">
+      <HintPath>C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>C:\Program Files\Unity\Editor\Data\Managed/UnityEditor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+>>>>>>> Stashed changes
      <Compile Include="Assets\APIs\websocket-sharp\AssemblyInfo.cs" />
      <Compile Include="Assets\APIs\websocket-sharp\ByteOrder.cs" />
      <Compile Include="Assets\APIs\websocket-sharp\CloseEventArgs.cs" />
@@ -311,6 +348,237 @@
      <Compile Include="Assets\APIs\websocket-sharp\WebSocketException.cs" />
      <Compile Include="Assets\APIs\websocket-sharp\WebSocketFrame.cs" />
      <Compile Include="Assets\APIs\websocket-sharp\WebSocketState.cs" />
+<<<<<<< Updated upstream
+=======
+     <Compile Include="Assets\BoundingMarkers.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\AdjustTilesetMapToScreenExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\AMapSearchExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\BingMapsElevationsExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\BingMapsLocationAPIExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\CacheTilesExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\CalcAreaExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\ChangeMarkerTextureExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\ChangePositionAndZoomEventsExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\ChangePositionUsingGyro.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\ChangeProviderAndTypeExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\CheckAllTilesLoadedExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\CheckIntenetConnectionExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\ColorUnderCursorExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\ControlDataTrafficExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\CreateCustomStylesExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\CreateMarkerOnClick.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\CustomDownloadTileExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\DetectWaterByTextureExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\DistanceAndDirectionExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\DistanceAndDurationExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\DottedLineExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\DragMarkerAndTranslateMapExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\DragMarkerByLongPressExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\DrawingAPI_Example.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\DrawingElementEventsExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\FindAutocompleteExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\FindDirectionExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\FindLocationExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\FindLocationNameExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\FindPlacesExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\GetCenterPointOfMarkersExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\GetElevationExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\GPXExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\GroupMarkersExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\HereRoutingAPIExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\InertiaExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\InterceptElevationRequestExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\InterceptInputExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\JSONExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\LockPositionAndZoomExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\Marker_GPS_Example.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\Marker3D_Example.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\Marker3D_GPS_Example.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\MarkerClickCountExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\MarkerClickExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\MarkerCustomDataExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\MarkerScaleByZoomExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\ModifyTooltipStyleExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\MoveMarkerOnRouteExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\MoveMarkersExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\NGUI\NGUICustomMarkerExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\NGUI\NGUICustomMarkerSystemExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\NGUI\NGUICustomTooltipExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\OnDrawTooltipExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\OnHoverExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\OpenRouteServiceExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\OSMRequestExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\QQSearchExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\RealTilesetSizeExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\ResetCameraRotationExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\RotateCameraByCompassExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\RotateMapInsteadMarkerExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\SaveMapStateExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\SaveMarker3DExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\SaveMarkersExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\ScreenToGeoExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\ShowMarkerLabelsByZoomExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\SmoothMoveExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\TilesetMapTilerOverlayExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\TilesetMarkerDepthExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\TilesetOverlayExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\TooltipWithoutBackgroundExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\uGUI\uGUICustomMarkerEngineExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\uGUI\uGUICustomMarkerExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\uGUI\uGUICustomTooltipExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\uGUI\uGUICustomTooltipForAllMarkersExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples (API usage)\What3WordsExample.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples\Scripts\Aircraft.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples\Scripts\AircraftWarning.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples\Scripts\CustomMarkerEngine.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples\Scripts\Demo.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples\Scripts\DriveToPoint.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples\Scripts\DriveToPointByRoute.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples\Scripts\DriveUsingKeyboard.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples\Scripts\SearchPanel.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples\Scripts\SmoothZoomOnMouseEvents.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples\Scripts\UIBubblePopup.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples\Scripts\UICompass.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Examples\Scripts\ZoomArea.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Buildings\OnlineMapsBuildingBase.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Buildings\OnlineMapsBuildingBuiltIn.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Buildings\OnlineMapsBuildingMaterial.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Buildings\OnlineMapsBuildings.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Controls\2D\OnlineMapsNGUITextureControl.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Controls\2D\OnlineMapsSpriteRendererControl.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Controls\2D\OnlineMapsUIImageControl.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Controls\2D\OnlineMapsUIRawImageControl.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Controls\3D\OnlineMapsTextureControl.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Controls\3D\OnlineMapsTileSetControl.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Controls\Base\OnlineMapsControlBase.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Controls\Base\OnlineMapsControlBase2D.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Controls\Base\OnlineMapsControlBase3D.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Controls\Base\OnlineMapsControlBaseDynamicMesh.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Controls\Base\OnlineMapsControlBaseUI.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Controls\Base\OnlineMapsControlBaseVectorMesh.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Core\OnlineMapsBuffer.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Core\OnlineMapsDMSConverter.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Core\OnlineMapsGPXObject.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Core\OnlineMapsInteractiveElementManager.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Core\OnlineMapsJPEGDecoder.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Core\OnlineMapsReflectionHelper.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Core\OnlineMapsUtils.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Core\OnlineMapsWWW.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Core\OnlineMapsWWWBehaviour.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Core\OnlineMapsZipDecompressor.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Drawing\Instances\OnlineMapsDrawingElement.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Drawing\Instances\OnlineMapsDrawingLine.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Drawing\Instances\OnlineMapsDrawingPoly.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Drawing\Instances\OnlineMapsDrawingRect.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Drawing\Managers\OnlineMapsDrawingElementManager.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Elevations\OnlineMapsArcGISElevationManager.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Elevations\OnlineMapsBingMapsElevationManager.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Elevations\OnlineMapsElevationManager.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Elevations\OnlineMapsElevationManagerBase.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Elevations\OnlineMapsMapboxElevationManager.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Elevations\OnlineMapsSinglePartElevationManager.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Elevations\OnlineMapsTiledElevationManager.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\ExtraTypes\OnlineMapsEnums.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\ExtraTypes\OnlineMapsGenericBase.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\ExtraTypes\OnlineMapsGeoRect.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\ExtraTypes\OnlineMapsPluginAttribute.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\ExtraTypes\OnlineMapsPositionRange.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\ExtraTypes\OnlineMapsRange.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\ExtraTypes\OnlineMapsSavableItem.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\ExtraTypes\OnlineMapsVector2d.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\ExtraTypes\OnlineMapsVector2i.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\ExtraTypes\OnlineMapsWizardControlHelperAttribute.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Interfaces\IOnlineMapsInteractiveElement.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Interfaces\IOnlineMapsSavableComponent.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\JSON\OnlineMapsJSON.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\JSON\OnlineMapsJSONArray.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\JSON\OnlineMapsJSONItem.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\JSON\OnlineMapsJSONObject.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\JSON\OnlineMapsJSONValue.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\LocationService\OnlineMapsLocationService.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\LocationService\OnlineMapsLocationServiceBase.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\LocationService\OnlineMapsLocationServiceGenericBase.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Markers\Drawers\OnlineMapsMarker2DDrawer.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Markers\Drawers\OnlineMapsMarker2DMeshDrawer.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Markers\Drawers\OnlineMapsMarker3DDrawer.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Markers\Drawers\OnlineMapsMarkerBillboardDrawer.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Markers\Drawers\OnlineMapsMarkerBufferDrawer.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Markers\Drawers\OnlineMapsMarkerDrawerBase.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Markers\Drawers\OnlineMapsMarkerFlatDrawer.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Markers\Instances\OnlineMapsMarker.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Markers\Instances\OnlineMapsMarker3D.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Markers\Instances\OnlineMapsMarker3DInstance.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Markers\Instances\OnlineMapsMarkerBase.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Markers\Instances\OnlineMapsMarkerBillboard.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Markers\Instances\OnlineMapsMarkerInstanceBase.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Markers\Managers\OnlineMapsMarker3DManager.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Markers\Managers\OnlineMapsMarkerManager.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Markers\Managers\OnlineMapsMarkerManagerBase.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\OnlineMaps.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Plugins\OnlineMapsCache.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Plugins\OnlineMapsCameraOrbit.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Plugins\OnlineMapsDirectionStep.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Plugins\OnlineMapsKeyboardInput.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Plugins\OnlineMapsKeyManager.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Plugins\OnlineMapsLimits.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Plugins\OnlineMapsLog.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Plugins\OnlineMapsPBR.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Projections\OnlineMapsProjection.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Projections\OnlineMapsProjectionSphericalMercator.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Projections\OnlineMapsProjectionWGS84.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Providers\Tiles\OnlineMapsProvider.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Providers\Traffic\OnlineMapsTrafficProvider.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Third-party Assets\OnlineMapsEasyTouchConnector.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Third-party Assets\OnlineMapsFingersTouchGesturesConnector.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Third-party Assets\OnlineMapsPanoConnector.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Third-party Assets\OnlineMapsRWTConnector.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Third-party Assets\OnlineMapsTouchScriptConnector.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Threading\OnlineMapsThreadManager.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Threading\OnlineMapsThreadWINRT.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Tiles\OnlineMapsRasterTile.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Tiles\OnlineMapsTile.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Tiles\OnlineMapsTileManager.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Tiles\OnlineMapsVectorTile.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Tooltips\OnlineMapsGUITooltipDrawer.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\Tooltips\OnlineMapsTooltipDrawerBase.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\WebServices\Base\OnlineMapsTextWebService.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\WebServices\Base\OnlineMapsWebServiceAPI.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\WebServices\OnlineMapsAMapSearch.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\WebServices\OnlineMapsBingMapsElevation.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\WebServices\OnlineMapsBingMapsLocation.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\WebServices\OnlineMapsGoogleDirections.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\WebServices\OnlineMapsGoogleElevation.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\WebServices\OnlineMapsGoogleGeocoding.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\WebServices\OnlineMapsGooglePlaceDetails.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\WebServices\OnlineMapsGooglePlacePhoto.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\WebServices\OnlineMapsGooglePlaces.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\WebServices\OnlineMapsGooglePlacesAutocomplete.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\WebServices\OnlineMapsGoogleRoads.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\WebServices\OnlineMapsHereRoutingAPI.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\WebServices\OnlineMapsOpenRouteService.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\WebServices\OnlineMapsOSMAPIQuery.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\WebServices\OnlineMapsOSMNominatim.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\WebServices\OnlineMapsQQSearch.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\WebServices\OnlineMapsWhat3Words.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\WebServices\Results\OnlineMapsAMapSearchResult.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\WebServices\Results\OnlineMapsBingMapsElevationResult.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\WebServices\Results\OnlineMapsBingMapsLocationResult.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\WebServices\Results\OnlineMapsGoogleDirectionsResult.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\WebServices\Results\OnlineMapsGoogleElevationResult.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\WebServices\Results\OnlineMapsGoogleGeocodingResult.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\WebServices\Results\OnlineMapsGooglePlaceDetailsResult.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\WebServices\Results\OnlineMapsGooglePlacesAutocompleteResult.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\WebServices\Results\OnlineMapsGooglePlacesResult.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\WebServices\Results\OnlineMapsHereRoutingAPIResult.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\WebServices\Results\OnlineMapsOpenRouteServiceDirectionResult.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\WebServices\Results\OnlineMapsOpenRouteServiceGeocodingResult.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\WebServices\Results\OnlineMapsOSMNominatimResult.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\WebServices\Results\OnlineMapsQQSearchResult.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\WebServices\Results\OnlineMapsWhat3WordsResult.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\XML\OnlineMapsXML.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\XML\OnlineMapsXMLList.cs" />
+     <Compile Include="Assets\Infinity Code\Online maps\Scripts\XML\OnlineMapsXMLNamespaceManager.cs" />
+>>>>>>> Stashed changes
      <Compile Include="Assets\Mapbox\Core\cheap-ruler-cs\CheapRuler.cs" />
      <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Directions\DirectionResource.cs" />
      <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Directions\Directions.cs" />
@@ -583,6 +851,7 @@
      <Compile Include="Assets\Mapbox\Unity\Utilities\VectorExtensions.cs" />
      <Compile Include="Assets\Menu\SettingsController.cs" />
      <Compile Include="Assets\Menu\StartVisualizer.cs" />
+<<<<<<< Updated upstream
      <Compile Include="Assets\Visualizer\MapPanel\Beacons\BNSpawner.cs" />
      <Compile Include="Assets\Visualizer\MapPanel\Beacons\TriangleData.cs" />
      <Compile Include="Assets\Visualizer\MapPanel\Firefighters\CircleData.cs" />
@@ -594,6 +863,12 @@
      <Compile Include="Assets\Visualizer\UI\OverviewController.cs" />
      <Compile Include="Assets\Visualizer\UI\TerminalController.cs" />
      <Compile Include="Assets\Visualizer\UI\UIFunctions.cs" />
+=======
+     <Compile Include="Assets\UI_Functions.cs" />
+     <Compile Include="Assets\UIFunctions.cs" />
+     <Compile Include="Assets\Visualizer\MapPanel\Device_Status.cs" />
+     <Compile Include="Assets\Visualizer\MarkerManager.cs" />
+>>>>>>> Stashed changes
      <Compile Include="Assets\Visualizer\WSNetworkManager.cs" />
      <None Include="Assets\Resources\Mapbox\MapboxConfiguration.txt" />
      <None Include="Assets\Mapbox\Shaders\RasterWithTransparencyShader.shader" />
@@ -602,6 +877,7 @@
      <None Include="Assets\Mapbox\README.txt" />
      <None Include="Assets\Mapbox\Core\Plugins\Android\UniAndroidPermission\AndroidManifest-uniRP.xml" />
      <None Include="Assets\Mapbox\Shaders\MapboxStyles.shader" />
+<<<<<<< Updated upstream
      <None Include="Assets\APIs\Infinity Code\Online maps\Shaders\TilesetShader.shader" />
      <None Include="Assets\APIs\Infinity Code\Online maps\Shaders\TilesetCutoutShader.shader" />
      <None Include="Assets\APIs\Infinity Code\Online maps\Shaders\TilesetDrawingElement.shader" />
@@ -651,6 +927,267 @@
  </Reference>
  <Reference Include="UnityEngine.StandardEvents">
  <HintPath>/Users/ipalabs/Library/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
+=======
+     <None Include="Assets\Infinity Code\Online maps\Shaders\TilesetShader.shader" />
+     <None Include="Assets\Infinity Code\Online maps\Shaders\TilesetCutoutShader.shader" />
+     <None Include="Assets\Infinity Code\Online maps\Shaders\TilesetDrawingElement.shader" />
+     <None Include="Assets\Mapbox\link.xml" />
+     <None Include="Assets\Mapbox\Core\Plugins\link.xml" />
+ <Reference Include="Unity.TextMeshPro.Editor">
+ <HintPath>C:/testFire/firefly/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.PackageManagerUI.Editor">
+ <HintPath>C:/testFire/firefly/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.CollabProxy.Editor">
+ <HintPath>C:/testFire/firefly/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.TextMeshPro">
+ <HintPath>C:/testFire/firefly/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Analytics.DataPrivacy">
+ <HintPath>C:/testFire/firefly/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.AIModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.ARModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.ARModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.AccessibilityModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AccessibilityModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.AnimationModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AnimationModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.AssetBundleModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AssetBundleModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.AudioModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AudioModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.BaselibModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.BaselibModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.ClothModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.ClothModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.CoreModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.CoreModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.CrashReportingModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.CrashReportingModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.DirectorModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.DirectorModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.FileSystemHttpModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.FileSystemHttpModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.GameCenterModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.GameCenterModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.GridModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.GridModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.HotReloadModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.HotReloadModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.IMGUIModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.IMGUIModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.ImageConversionModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.ImageConversionModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.InputModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.InputModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.JSONSerializeModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.JSONSerializeModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.LocalizationModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.LocalizationModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.ParticleSystemModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.ParticleSystemModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.PerformanceReportingModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.PerformanceReportingModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.PhysicsModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.PhysicsModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Physics2DModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.Physics2DModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.ProfilerModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.ProfilerModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.ScreenCaptureModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.ScreenCaptureModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.SharedInternalsModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.SharedInternalsModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.SpatialTrackingModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.SpatialTrackingModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.SpriteMaskModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.SpriteMaskModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.SpriteShapeModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.SpriteShapeModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.StreamingModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.StreamingModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.StyleSheetsModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.StyleSheetsModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.SubstanceModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.SubstanceModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.TLSModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.TLSModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.TerrainModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.TerrainModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.TerrainPhysicsModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.TerrainPhysicsModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.TextCoreModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.TextCoreModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.TextRenderingModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.TextRenderingModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.TilemapModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.TilemapModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.TimelineModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.TimelineModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UIModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.UIModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UIElementsModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.UIElementsModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UNETModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.UNETModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UmbraModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.UmbraModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UnityAnalyticsModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.UnityAnalyticsModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UnityConnectModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.UnityConnectModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UnityTestProtocolModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.UnityTestProtocolModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UnityWebRequestModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UnityWebRequestAssetBundleModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UnityWebRequestAudioModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UnityWebRequestTextureModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UnityWebRequestWWWModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.VFXModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.VFXModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.VRModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.VRModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.VehiclesModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.VehiclesModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.VideoModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.VideoModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.WindModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.WindModule.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.XRModule">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Locator">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/Unity.Locator.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UI">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.TestRunner">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
+ </Reference>
+ <Reference Include="nunit.framework">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Timeline">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Networking">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.GoogleAudioSpatializer">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/RuntimeEditor/UnityEngine.GoogleAudioSpatializer.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.SpatialTracking">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
+ </Reference>
+ <Reference Include="Mapbox.IO.Compression">
+ <HintPath>C:/testFire/firefly/Assets/Mapbox/Core/Plugins/ThirdParty/Mapbox.IO.Compression/net35/Mapbox.IO.Compression.dll</HintPath>
+ </Reference>
+ <Reference Include="Mapbox.Json">
+ <HintPath>C:/testFire/firefly/Assets/Mapbox/Core/Plugins/ThirdParty/Mapbox.Json/Net35/Mapbox.Json.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Analytics.Editor">
+ <HintPath>C:/testFire/firefly/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Analytics.StandardEvents">
+ <HintPath>C:/testFire/firefly/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Analytics.Tracker">
+ <HintPath>C:/testFire/firefly/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+ </Reference>
+ <Reference Include="mscorlib">
+ <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/unity/mscorlib.dll</HintPath>
+ </Reference>
+ <Reference Include="System">
+ <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/unity/System.dll</HintPath>
+ </Reference>
+ <Reference Include="System.Core">
+ <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/unity/System.Core.dll</HintPath>
+ </Reference>
+ <Reference Include="System.Runtime.Serialization">
+ <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/unity/System.Runtime.Serialization.dll</HintPath>
+ </Reference>
+ <Reference Include="System.Xml">
+ <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/unity/System.Xml.dll</HintPath>
+ </Reference>
+ <Reference Include="System.Xml.Linq">
+ <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/unity/System.Xml.Linq.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityScript">
+ <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/unity/UnityScript.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityScript.Lang">
+ <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/unity/UnityScript.Lang.dll</HintPath>
+ </Reference>
+ <Reference Include="Boo.Lang">
+ <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/unity/Boo.Lang.dll</HintPath>
+>>>>>>> Stashed changes
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

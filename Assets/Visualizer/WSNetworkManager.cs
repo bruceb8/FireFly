@@ -37,7 +37,7 @@ public class WSNetworkManager : MonoBehaviour
     public List<Device_Status> beacons = new List<Device_Status>();
     public List<Device_Status> drones = new List<Device_Status>();
 
-    private string last = "";
+    public Queue<string> TMQueue = new Queue<string>();
 
     class WebMessage
     {
@@ -74,8 +74,6 @@ public class WSNetworkManager : MonoBehaviour
 
         connected = true;
         WebMessage message = JsonUtility.FromJson<WebMessage>(e.Data);
-
-        last = e.Data;
 
         Current_Status incoming_device = JsonUtility.FromJson<Current_Status>(message.body);
 
@@ -129,6 +127,7 @@ public class WSNetworkManager : MonoBehaviour
         }
         else if (message.type == "terminal")
         {
+            TMQueue.Enqueue(message.body);
         }
     }
 

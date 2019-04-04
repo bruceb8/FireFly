@@ -640,6 +640,9 @@
     <Compile Include="Assets\Mapbox\Unity\Utilities\VectorExtensions.cs" />
     <Compile Include="Assets\Menu\SettingsController.cs" />
     <Compile Include="Assets\Menu\StartVisualizer.cs" />
+    <Compile Include="Assets\OverviewWindowControl.cs" />
+    <Compile Include="Assets\RestNetworkManager.cs" />
+    <Compile Include="Assets\TerminalWindowControl.cs" />
     <Compile Include="Assets\Visualizer\MapPanel\Device_Status.cs" />
     <Compile Include="Assets\Visualizer\MarkerManager.cs" />
     <Compile Include="Assets\Visualizer\UIFunctions.cs" />

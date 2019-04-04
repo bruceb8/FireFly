@@ -17,11 +17,15 @@ namespace InfinityCode.OnlineMapsExamples
     {
 
             public GameObject map;
+
+            public GameObject inputAltitude;
             private OnlineMaps m;
             private OnlineMapsMarkerManager m_manager;
 
             public OnlineMapsMarker m0;
             public OnlineMapsMarker m1; 
+
+            public OnlineMapsMarker mStart;
 
 
 
@@ -29,10 +33,17 @@ namespace InfinityCode.OnlineMapsExamples
 
             private Boolean isPlaced = false;
 
+            private bool placeStart = false;
+
+            private int altitude = 30;
+
+            private int cycles = 1;
+
             public int placeMarker = 0;
             private string url = "http://localhost:8080/GARBAGE"; 
         private void Start()
         {
+            url = "http://" + PlayerPrefs.GetString("ServerIP") + ":" + "8080/GARBAGE"; 
             // Subscribe to the click event.
             OnlineMapsControlBase.instance.OnMapClick += OnMapClick;
             // Create a label for the marker.
@@ -41,8 +52,10 @@ namespace InfinityCode.OnlineMapsExamples
             // Create a new marker.
             m0 = OnlineMapsMarkerManager.CreateItem(0, 0, label);
             m1 = OnlineMapsMarkerManager.CreateItem(0, 0, label);
+            mStart = OnlineMapsMarkerManager.CreateItem(0, 0, label);
             m0.enabled = false;
             m1.enabled = false;
+            mStart.enabled = false;
 
             // foreach(OnlineMapsMarker marker in m_manager.items){
             //     string markerID = marker.label;
@@ -87,11 +100,29 @@ namespace InfinityCode.OnlineMapsExamples
                     m1.enabled = true;
                     currentMarker +=1;
 
-                    isPlaced = true;
+                    if(mStart.enabled == true){
+                        isPlaced = true;
+                    }
+
                 }
 
                 currentMarker = currentMarker % 2;
                 placeMarker = placeMarker - 1;
+            }
+
+            if(placeStart == true && placeMarker == 0){
+                OnlineMapsControlBase.instance.GetCoords(out lng, out lat);
+
+                mStart.enabled = true;
+                mStart.SetPosition(lng,lat);
+
+                placeStart = false;
+
+                if(m1.enabled == true && m0.enabled == true){
+                    isPlaced = true;
+                }
+
+
             }
             
 
@@ -105,32 +136,58 @@ namespace InfinityCode.OnlineMapsExamples
 
         public void clearMarkers(){
             currentMarker = 0;
-            m0.SetPosition(0,0);
-            m1.SetPosition(0,0);
+            // m0.SetPosition(0,0);
+            // m1.SetPosition(0,0);
+            // mStart.SetPosition(0,0);
             m0.enabled = false;
             m1.enabled = false;
+            mStart.enabled = false;
             isPlaced = false;
 
 
         }
 
+        public void updateAltitude(string theInput){
+            altitude = int.Parse(theInput);
+        }
 
 
-        
+        public void setStart(){
+            // Get the coordinates under the cursor.
+            placeStart = true;
+            
+
+        }
+
+        public void updateCycles(string theInput){
+            cycles = int.Parse(theInput);
+        }
 
         public void SendGeofence()
         {
             var request = new UnityWebRequest(url, "POST");
 
             //Now we have to build the JSON string from the beacons
-            string test = "{\"lat\":\""+ m0.position.x 
-            +"\",\"long\":\"" + m0.position.y + "\"}"
-            ;
+            string test = "{\"lats\":\""+ mStart.position.x 
+            +"\",\"lngs\":\"" + mStart.position.y + "\","
+            +"\"lat0\":\"" + m0.position.x + "\","
+            +"\"lng0\":\"" + m0.position.y + "\","
+            +"\"lat1\":\"" + m0.position.x + "\","
+            +"\"lng1\":\"" + m1.position.y + "\","
+            +"\"lat2\":\"" + m1.position.x + "\","
+            +"\"lng2\":\"" + m1.position.y + "\","
+            +"\"lat3\":\"" + m1.position.x + "\","
+            +"\"lng3\":\"" + m0.position.y + "\","
+            +"\"alt\":\"" + altitude + "\","
+            +"\"cycles\":\"" + cycles + "\"}";
+
             byte[] bodyRaw = Encoding.UTF8.GetBytes(test);
             request.uploadHandler = (UploadHandler) new UploadHandlerRaw(bodyRaw);
             request.downloadHandler = (DownloadHandler) new DownloadHandlerBuffer();
 
             request.SetRequestHeader("Content-Type", "test/plain");
+
+            
 
             if(isPlaced == true){
                 request.SendWebRequest();

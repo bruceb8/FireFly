@@ -632,6 +632,7 @@
      <Compile Include="Assets\Mapbox\Unity\Utilities\VectorExtensions.cs" />
      <Compile Include="Assets\Menu\SettingsController.cs" />
      <Compile Include="Assets\Menu\StartVisualizer.cs" />
+     <Compile Include="Assets\PanelControls.cs" />
      <Compile Include="Assets\UI_Functions.cs" />
      <Compile Include="Assets\UIFunctions.cs" />
      <Compile Include="Assets\Visualizer\MapPanel\Device_Status.cs" />
@@ -650,19 +651,19 @@
      <None Include="Assets\Mapbox\link.xml" />
      <None Include="Assets\Mapbox\Core\Plugins\link.xml" />
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>C:/testFire/Backup2/firefly/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>C:/testFire/SAFETYDANCE/firefly/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.PackageManagerUI.Editor">
- <HintPath>C:/testFire/Backup2/firefly/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+ <HintPath>C:/testFire/SAFETYDANCE/firefly/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>C:/testFire/Backup2/firefly/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ <HintPath>C:/testFire/SAFETYDANCE/firefly/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>C:/testFire/Backup2/firefly/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>C:/testFire/SAFETYDANCE/firefly/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.DataPrivacy">
- <HintPath>C:/testFire/Backup2/firefly/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+ <HintPath>C:/testFire/SAFETYDANCE/firefly/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -863,19 +864,19 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
  </Reference>
  <Reference Include="Mapbox.IO.Compression">
- <HintPath>C:/testFire/Backup2/firefly/Assets/Mapbox/Core/Plugins/ThirdParty/Mapbox.IO.Compression/net35/Mapbox.IO.Compression.dll</HintPath>
+ <HintPath>C:/testFire/SAFETYDANCE/firefly/Assets/Mapbox/Core/Plugins/ThirdParty/Mapbox.IO.Compression/net35/Mapbox.IO.Compression.dll</HintPath>
  </Reference>
  <Reference Include="Mapbox.Json">
- <HintPath>C:/testFire/Backup2/firefly/Assets/Mapbox/Core/Plugins/ThirdParty/Mapbox.Json/Net35/Mapbox.Json.dll</HintPath>
+ <HintPath>C:/testFire/SAFETYDANCE/firefly/Assets/Mapbox/Core/Plugins/ThirdParty/Mapbox.Json/Net35/Mapbox.Json.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.Editor">
- <HintPath>C:/testFire/Backup2/firefly/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+ <HintPath>C:/testFire/SAFETYDANCE/firefly/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.StandardEvents">
- <HintPath>C:/testFire/Backup2/firefly/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+ <HintPath>C:/testFire/SAFETYDANCE/firefly/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.Tracker">
- <HintPath>C:/testFire/Backup2/firefly/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+ <HintPath>C:/testFire/SAFETYDANCE/firefly/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
  </Reference>
  <Reference Include="mscorlib">
  <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/unity/mscorlib.dll</HintPath>

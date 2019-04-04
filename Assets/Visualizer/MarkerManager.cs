@@ -154,6 +154,9 @@ public class MarkerManager : MonoBehaviour
             current_target_marker_color = current_target_marker_status.marker_color;
 
             current_target_marker = next_marker;
+            FocusWindow.updateText(current_target_marker_status);
+
+
         }
         else //something is currently selected
         {
@@ -177,6 +180,7 @@ public class MarkerManager : MonoBehaviour
                 next_marker.scale = next_marker.scale * 2;
 
                 current_target_marker = next_marker;
+                FocusWindow.updateText(current_target_marker_status);
 
             }
             else //toggle off current selection meaning that the previous target is the same as the one we just clicked on.
@@ -188,10 +192,11 @@ public class MarkerManager : MonoBehaviour
                 current_target_marker.scale = current_target_marker.scale / 2;
                 current_target_marker = null;
                 UI.path_is_drawn = false;
+                FocusWindow.clearText();
             }
             UI.ShowPath();
+
         }
-        FocusWindow.updateText(current_target_marker_status);
     }
     private OnlineMapsMarker getMarker(string label)
     {

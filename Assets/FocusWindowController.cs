@@ -13,4 +13,8 @@ public class FocusWindowController : MonoBehaviour
     {
         Focus.text = input.toString();
     }
+    public void clearText()
+    {
+        Focus.text = "No device currently selected";
+    }
 }

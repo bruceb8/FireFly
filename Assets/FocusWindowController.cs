@@ -11,7 +11,6 @@ public class FocusWindowController : MonoBehaviour
 
     public void updateText(Device_Status input)
     {
-        Debug.Log("Updating Text!");
         Focus.text = input.toString();
     }
 }

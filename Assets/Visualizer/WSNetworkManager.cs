@@ -39,6 +39,9 @@ public class WSNetworkManager : MonoBehaviour
 
     public Queue<string> TMQueue = new Queue<string>();
 
+
+    public TerminalWindowControl terminal;
+
     class WebMessage
     {
         public string type;
@@ -61,7 +64,11 @@ public class WSNetworkManager : MonoBehaviour
         ws.OnClose += Ws_OnClose;
         ws.OnError += Ws_OnError;
     }
-
+    private void Ws_OnOpen()
+    {
+        connected = true;
+        terminal.TerminalColorPrint("Connected to websocket from server.", Color.green);
+    }
     private void Ws_OnError(object sender, ErrorEventArgs e){}
 
     private void Ws_OnClose(object sender, CloseEventArgs e)
@@ -94,6 +101,8 @@ public class WSNetworkManager : MonoBehaviour
             {
                 temp_device.position_log.Add(new Vector2(temp_device.lon, temp_device.lat));
                 firefighters.Add(temp_device);
+                terminal.TerminalColorPrint("Added firefighter with id: " + temp_device.id, Color.cyan);
+
             }
         }
         else if (message.type == "bn" || message.type == "BN")
@@ -108,6 +117,9 @@ public class WSNetworkManager : MonoBehaviour
                 temp_device.position_log.Add(new Vector2(temp_device.lon, temp_device.lat));
 
                 beacons.Add(temp_device);
+                terminal.TerminalColorPrint("Added beacon with id: " + temp_device.id, Color.cyan);
+
+
             }
 
         }
@@ -123,6 +135,7 @@ public class WSNetworkManager : MonoBehaviour
                 temp_device.position_log.Add(new Vector2(temp_device.lon, temp_device.lat));
 
                 drones.Add(temp_device);
+                terminal.TerminalColorPrint("Added drone with id: " + temp_device.id, Color.cyan);
             }
         }
         else if (message.type == "terminal")

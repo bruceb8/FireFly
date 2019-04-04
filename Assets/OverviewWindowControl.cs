@@ -26,11 +26,16 @@ public class OverviewWindowControl : MonoBehaviour
         output += "> Runtime: " + TimeSpan.FromSeconds((int)Time.timeSinceLevelLoad).ToString() + "\n";
         if (WS.firefighters != null)
         {
-            output += "> Firefighters: " + WS.firefighters.Count + "\n";
+            output += "> Number of Firefighters: " + WS.firefighters.Count + "\n";
         }
         if (WS.beacons != null)
         {
-            output += "> Beacons: " + WS.beacons.Count + "\n";
+            output += "> Number of Beacons: " + WS.beacons.Count + "\n";
+        }
+        if(WS.drones != null)
+        {
+            output += "> Number of Drones: " + WS.drones.Count + "\n";
+
         }
         OverviewField.text = output;
     }

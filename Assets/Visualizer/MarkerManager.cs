@@ -11,43 +11,51 @@ public class MarkerManager : MonoBehaviour
     private OnlineMapsMarkerManager m_manager;
     public WSNetworkManager WSManager;
     private Texture2D FF_texture, BN_texture, DN_texture, Currently_Selected;
+    public FocusWindowController FocusWindow;
+    public UIFunctions UI;
 
     public OnlineMapsMarker current_target_marker;
     public Device_Status current_target_marker_status;
-    private Color32 current_target_marker_color;
+    public Color32 current_target_marker_color;
     private Texture2D current_target_old_texture;
+
     // Use this for initialization
     void Start()
     {
         m = map.GetComponent<OnlineMaps>();
         m_manager = map.GetComponent<OnlineMapsMarkerManager>();
         //load textures for devices
-        byte[] FileData;
+        //byte[] FileData;
 
-        FileData = File.ReadAllBytes("Assets/Resources/Square2.png");//firefighter texture
-        FF_texture = new Texture2D(2, 2);           // Create new "empty" texture
-        FF_texture.LoadImage(FileData);
+        //FileData = File.ReadAllBytes("Assets/Resources/Square2.png");//firefighter texture
+        //FF_texture = new Texture2D(2, 2);           // Create new "empty" texture
+        //FF_texture.LoadImage(FileData);
 
-        byte[] FileData1;
+        //byte[] FileData1;
 
-        FileData1 = File.ReadAllBytes("Assets/Resources/circle.png");//firefighter texture
-        DN_texture = new Texture2D(2, 2);           // Create new "empty" texture
-        DN_texture.LoadImage(FileData1);
+        //FileData1 = File.ReadAllBytes("Assets/Resources/circle.png");//firefighter texture
+        //DN_texture = new Texture2D(2, 2);           // Create new "empty" texture
+        //DN_texture.LoadImage(FileData1);
 
-        byte[] FileData2;
+        //byte[] FileData2;
 
-        FileData2 = File.ReadAllBytes("Assets/Resources/triangle.png");//firefighter texture
-        BN_texture = new Texture2D(2, 2);           // Create new "empty" texture
-        BN_texture.LoadImage(FileData2);
+        //FileData2 = File.ReadAllBytes("Assets/Resources/triangle.png");//firefighter texture
+        //BN_texture = new Texture2D(2, 2);           // Create new "empty" texture
+        //BN_texture.LoadImage(FileData2);
 
-        byte[] FileData3;
+        //byte[] FileData3;
 
-        FileData3 = File.ReadAllBytes("Assets/Resources/target.png");//firefighter texture
-        Currently_Selected = new Texture2D(2, 2);           // Create new "empty" texture
-        Currently_Selected.LoadImage(FileData3);
+        //FileData3 = File.ReadAllBytes("Assets/Resources/target.png");//firefighter texture
+        //Currently_Selected = new Texture2D(2, 2);           // Create new "empty" texture
+        //Currently_Selected.LoadImage(FileData3);
 
-        current_target_marker = null;
-    }
+        FF_texture = Resources.Load<Texture2D>("Square2");
+        BN_texture = Resources.Load<Texture2D>("triangle");
+        DN_texture = Resources.Load<Texture2D>("circle");
+        Currently_Selected = Resources.Load<Texture2D>("target");
+
+      
+}
 
     // Update is called once per frame
     void Update()
@@ -66,7 +74,7 @@ public class MarkerManager : MonoBehaviour
         {
             if (!ff.isMarker)
             {
-                OnlineMapsMarker temp = m_manager.Create(new Vector2(ff.lon, ff.lat), changeTextureColor(FF_texture), "FF:" + ff.id);
+                OnlineMapsMarker temp = m_manager.Create(new Vector2(ff.lon, ff.lat), changeTextureColor(FF_texture, out ff.marker_color), "FF:" + ff.id);
                 temp.scale = 0.1f;
                 ff.isMarker = true;
                 temp.OnClick += OnMarkerClick;
@@ -94,7 +102,8 @@ public class MarkerManager : MonoBehaviour
         {
             if (!dn.isMarker)
             {
-                OnlineMapsMarker temp = m_manager.Create(new Vector2(dn.lon, dn.lat), changeTextureColor(DN_texture), "DN:" + dn.id);
+                OnlineMapsMarker temp = m_manager.Create(new Vector2(dn.lon, dn.lat), changeTextureColor(DN_texture,out dn.marker_color), "DN:" + dn.id);
+
                 temp.scale = 0.1f;
                 temp.OnClick += OnMarkerClick;
                 dn.isMarker = true;
@@ -115,8 +124,10 @@ public class MarkerManager : MonoBehaviour
             {
                 if (new Vector2(device.lon, device.lat) != marker.position)
                 {
-                    //Debug.Log("In updateMarker!");
+
                     marker.SetPosition(device.lon, device.lat);
+                  
+                    device.position_log.Add(marker.position);
                     OnlineMaps.instance.Redraw();
                     break;
                 }
@@ -124,21 +135,27 @@ public class MarkerManager : MonoBehaviour
         }
     }
 
-   
-
+  
 
     //click on marker event
     private void OnMarkerClick(OnlineMapsMarkerBase marker)
     {
 
-        if (current_target_marker == null) //nothing is currently selected...
+        if (current_target_marker == null || current_target_marker.label == "") //nothing is currently selected...
         {
             OnlineMapsMarker next_marker = getMarker(marker.label);
             current_target_old_texture = CopyTexture(next_marker.texture);
             next_marker.texture = OverlayCurrentTarget(next_marker.texture); //add target texture overlay
 
             next_marker.scale = next_marker.scale * 2;
+
+            string[] tempstr = next_marker.label.Split(':');
+            current_target_marker_status = WSManager.GetDevice(tempstr[1], tempstr[0]);
+            current_target_marker_color = current_target_marker_status.marker_color;
+
             current_target_marker = next_marker;
+            FocusWindow.updateText(current_target_marker_status);
+
 
         }
         else //something is currently selected
@@ -153,11 +170,18 @@ public class MarkerManager : MonoBehaviour
                 current_target_marker.scale = current_target_marker.scale / 2;
 
                 OnlineMapsMarker next_marker = getMarker(marker.label);
+                string[] tempstr = next_marker.label.Split(':');
+                current_target_marker_status = WSManager.GetDevice(tempstr[1], tempstr[0]);
+                current_target_marker_color = current_target_marker_status.marker_color;
+
                 current_target_old_texture = CopyTexture(next_marker.texture);
                 next_marker.texture = OverlayCurrentTarget(next_marker.texture); //add target texture overlay
 
                 next_marker.scale = next_marker.scale * 2;
+
                 current_target_marker = next_marker;
+                FocusWindow.updateText(current_target_marker_status);
+
             }
             else //toggle off current selection meaning that the previous target is the same as the one we just clicked on.
             {
@@ -167,12 +191,12 @@ public class MarkerManager : MonoBehaviour
                 //scale back down
                 current_target_marker.scale = current_target_marker.scale / 2;
                 current_target_marker = null;
+                UI.path_is_drawn = false;
+                FocusWindow.clearText();
             }
+            UI.ShowPath();
+
         }
-
-
-        //show on window
-
     }
     private OnlineMapsMarker getMarker(string label)
     {
@@ -271,11 +295,10 @@ public class MarkerManager : MonoBehaviour
 
     //Make a random color for the the device textures. This is assumes simple 
     //textures such that a non transparent color will be changed by this function.
-    public Texture2D changeTextureColor(Texture2D input)
+    public Texture2D changeTextureColor(Texture2D input, out Color32 newColor)
     {
         Color32[] pixels = input.GetPixels32();
-        Color32[] temppixels = new Color32[pixels.Length];
-        Color32 newColor = new Color32(
+        Color32[] temppixels = new Color32[pixels.Length];newColor = new Color32(
              (byte)UnityEngine.Random.Range(0, 255),        // R
              (byte)UnityEngine.Random.Range(0, 255),        // G
              (byte)UnityEngine.Random.Range(0, 255),        // B

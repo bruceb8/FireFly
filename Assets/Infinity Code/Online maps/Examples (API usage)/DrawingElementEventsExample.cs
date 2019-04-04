@@ -17,7 +17,7 @@ namespace InfinityCode.OnlineMapsExamples
         private void Start()
         {
             // Create a new rect element.
-            OnlineMapsDrawingRect element = new OnlineMapsDrawingRect(-119.0807f, 34.58658f, 3, 3, Color.black, 1f,
+            OnlineMapsDrawingRect element = new OnlineMapsDrawingRect(-122.432365203513f, 47.2498511870695f, 3, 3, Color.black, 1f,
                 Color.blue);
 
             // Subscribe to events.

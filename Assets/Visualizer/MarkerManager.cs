@@ -24,37 +24,11 @@ public class MarkerManager : MonoBehaviour
     {
         m = map.GetComponent<OnlineMaps>();
         m_manager = map.GetComponent<OnlineMapsMarkerManager>();
-        //load textures for devices
-        //byte[] FileData;
-
-        //FileData = File.ReadAllBytes("Assets/Resources/Square2.png");//firefighter texture
-        //FF_texture = new Texture2D(2, 2);           // Create new "empty" texture
-        //FF_texture.LoadImage(FileData);
-
-        //byte[] FileData1;
-
-        //FileData1 = File.ReadAllBytes("Assets/Resources/circle.png");//firefighter texture
-        //DN_texture = new Texture2D(2, 2);           // Create new "empty" texture
-        //DN_texture.LoadImage(FileData1);
-
-        //byte[] FileData2;
-
-        //FileData2 = File.ReadAllBytes("Assets/Resources/triangle.png");//firefighter texture
-        //BN_texture = new Texture2D(2, 2);           // Create new "empty" texture
-        //BN_texture.LoadImage(FileData2);
-
-        //byte[] FileData3;
-
-        //FileData3 = File.ReadAllBytes("Assets/Resources/target.png");//firefighter texture
-        //Currently_Selected = new Texture2D(2, 2);           // Create new "empty" texture
-        //Currently_Selected.LoadImage(FileData3);
 
         FF_texture = Resources.Load<Texture2D>("Square2");
         BN_texture = Resources.Load<Texture2D>("triangle");
         DN_texture = Resources.Load<Texture2D>("circle");
         Currently_Selected = Resources.Load<Texture2D>("target");
-
-      
 }
 
     // Update is called once per frame
@@ -120,16 +94,19 @@ public class MarkerManager : MonoBehaviour
 
         foreach (OnlineMapsMarker marker in m_manager.items)
         {
-            if (device.id == marker.label.Split(':')[1])
+            if (marker.label != "" && marker.label != "FP")
             {
-                if (new Vector2(device.lon, device.lat) != marker.position)
+                if (device.id == marker.label.Split(':')[1])
                 {
+                    if (new Vector2(device.lon, device.lat) != marker.position)
+                    {
 
-                    marker.SetPosition(device.lon, device.lat);
-                  
-                    device.position_log.Add(marker.position);
-                    OnlineMaps.instance.Redraw();
-                    break;
+                        marker.SetPosition(device.lon, device.lat);
+
+                        device.position_log.Add(marker.position);
+                        OnlineMaps.instance.Redraw();
+                        break;
+                    }
                 }
             }
         }

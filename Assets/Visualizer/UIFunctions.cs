@@ -42,27 +42,41 @@ public class UIFunctions : MonoBehaviour
             m.zoom = CalculateNewMapZoom();
         }
     }
+
     private int CalculateNewMapZoom()
     {
         return 20;
     }
+
     private double getAvgLon()
     {
         double output = 0;
+        int count = 0;
         foreach (OnlineMapsMarker marker in m_manager.items)
         {
-            output += marker.position.x;
+
+            if ( marker.label != "FP")
+            {
+                output += marker.position.x;
+                count++;
+            }
         }
-        return output / m_manager.Count;
+        return output / count;
     }
     private double getAvgLat()
     {
         double output = 0;
+        int count = 0;
+
         foreach (OnlineMapsMarker marker in m_manager.items)
         {
-            output += marker.position.y;
+            if (marker.label != "FP")
+            {
+                output += marker.position.y;
+                count++;
+            }
         }
-        return output / m_manager.Count;
+        return output / count;
     }
     public void ToggleBeacons()
     {
@@ -122,16 +136,20 @@ public class UIFunctions : MonoBehaviour
         {
             if (local_m_manager.current_target_marker != null)
             {
-                string[] current_id = local_m_manager.current_target_marker.label.Split(':');
-              
-                Device_Status marker = WSManager.GetDevice(current_id[1], current_id[0]);
 
-                if (marker.position_log != null)
+                string[] current_id = local_m_manager.current_target_marker.label.Split(':');
+                if (current_id.Length > 1)
                 {
-                    line_drawer = new OnlineMapsDrawingLine(marker.position_log, local_m_manager.current_target_marker_color, 5);
-                    OnlineMapsDrawingElementManager.AddItem(line_drawer);
-                    path_is_drawn = true;
+                    Device_Status marker = WSManager.GetDevice(current_id[1], current_id[0]);
+
+                    if (marker.position_log != null)
+                    {
+                        line_drawer = new OnlineMapsDrawingLine(marker.position_log, local_m_manager.current_target_marker_color, 5);
+                        OnlineMapsDrawingElementManager.AddItem(line_drawer);
+                        path_is_drawn = true;
+                    }
                 }
+            
             }
         }
         else

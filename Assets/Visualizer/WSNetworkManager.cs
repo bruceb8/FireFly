@@ -80,6 +80,7 @@ public class WSNetworkManager : MonoBehaviour
     {
 
         connected = true;
+        
         WebMessage message = JsonUtility.FromJson<WebMessage>(e.Data);
 
         Current_Status incoming_device = JsonUtility.FromJson<Current_Status>(message.body);

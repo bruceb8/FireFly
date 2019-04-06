@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 using System;
 public class UIFunctions : MonoBehaviour
 {
-
     public GameObject map;
     private OnlineMaps m;
     private OnlineMapsMarkerManager m_manager;
@@ -14,14 +13,14 @@ public class UIFunctions : MonoBehaviour
     public MarkerManager local_m_manager;
 
     public bool all_paths_shown;
-    public bool path_is_drawn;
+
 
     // Start is called before the first frame update
     void Start()
     {
         m = map.GetComponent<OnlineMaps>();
         m_manager = map.GetComponent<OnlineMapsMarkerManager>();
-        path_is_drawn = false;
+
         all_paths_shown = false;
     }
 
@@ -132,57 +131,27 @@ public class UIFunctions : MonoBehaviour
     //will draw the current position log of currently selected device
     public void TogglePath()
     {
-        if (!path_is_drawn)
+        //Device_Status current = local_m_manager.current_target_status;
+        if (!local_m_manager.current_target_status.path_is_drawn)
         {
-            if (local_m_manager.current_target_marker != null)
+            if (local_m_manager.current_target_status != null)
             {
-
-                string[] current_id = local_m_manager.current_target_marker.label.Split(':');
-                if (current_id.Length > 1)
-                {
-                    Device_Status marker = WSManager.GetDevice(current_id[1], current_id[0]);
-
-                    if (marker.position_log != null)
-                    {
-                        line_drawer = new OnlineMapsDrawingLine(marker.position_log, local_m_manager.current_target_marker_color, 5);
-                        OnlineMapsDrawingElementManager.AddItem(line_drawer);
-                        path_is_drawn = true;
-                    }
-                }
-            
+           
+                line_drawer = new OnlineMapsDrawingLine(local_m_manager.current_target_status.position_log, local_m_manager.current_target_status.marker_color, 5);
+               
+                //Debug.Log("Creating line");
+                OnlineMapsDrawingElementManager.AddItem(line_drawer);
+                local_m_manager.current_target_status.line = line_drawer;
+                local_m_manager.current_target_status.path_is_drawn = true;
             }
         }
         else
         {
-            path_is_drawn = false;
-            OnlineMapsDrawingElementManager.RemoveItem(line_drawer);
+            local_m_manager.current_target_status.path_is_drawn = false;
+            OnlineMapsDrawingElementManager.RemoveItem(local_m_manager.current_target_status.line);
         }
     }
-    public void ShowPath()
-    {
-        //if(line_drawer != null) OnlineMapsDrawingElementManager.RemoveItem(line_drawer);
-        if (!path_is_drawn)
-        {
-            if (local_m_manager.current_target_marker != null)
-            {
-                string[] current_id = local_m_manager.current_target_marker.label.Split(':');
-
-                Device_Status marker = WSManager.GetDevice(current_id[1], current_id[0]);
-
-                if (marker.position_log != null)
-                {
-                    line_drawer = new OnlineMapsDrawingLine(marker.position_log, local_m_manager.current_target_marker_color, 5);
-                    OnlineMapsDrawingElementManager.AddItem(line_drawer);
-                 
-                }
-            }
-        }
-        else
-        {
-            OnlineMapsDrawingElementManager.RemoveItem(line_drawer);
-        }
-
-    }
+  
 
     public void ShowAllPaths()
     {
@@ -193,11 +162,7 @@ public class UIFunctions : MonoBehaviour
             {
                 OnlineMapsDrawingElementManager.AddItem(new OnlineMapsDrawingLine(FF.position_log, FF.marker_color, 5));
             }
-            foreach (Device_Status BN in WSManager.beacons)
-            {
-                OnlineMapsDrawingElementManager.AddItem(new OnlineMapsDrawingLine(BN.position_log, BN.marker_color, 5));
 
-            }
             foreach (Device_Status DN in WSManager.drones)
             {
                 OnlineMapsDrawingElementManager.AddItem(new OnlineMapsDrawingLine(DN.position_log, DN.marker_color, 5));

@@ -14,8 +14,7 @@ public class MarkerManager : MonoBehaviour
     public FocusWindowController FocusWindow;
     public UIFunctions UI;
 
-    public OnlineMapsMarker current_target_marker;
-    public Device_Status current_target_marker_status;
+    public Device_Status current_target_status;
     public Color32 current_target_marker_color;
     private Texture2D current_target_old_texture;
 
@@ -29,7 +28,7 @@ public class MarkerManager : MonoBehaviour
         BN_texture = Resources.Load<Texture2D>("triangle");
         DN_texture = Resources.Load<Texture2D>("circle");
         Currently_Selected = Resources.Load<Texture2D>("target");
-}
+    }
 
     // Update is called once per frame
     void Update()
@@ -50,6 +49,8 @@ public class MarkerManager : MonoBehaviour
             {
                 OnlineMapsMarker temp = m_manager.Create(new Vector2(ff.lon, ff.lat), changeTextureColor(FF_texture, out ff.marker_color), "FF:" + ff.id);
                 temp.scale = 0.1f;
+                ff.marker = temp;
+
                 ff.isMarker = true;
                 temp.OnClick += OnMarkerClick;
             }
@@ -64,6 +65,7 @@ public class MarkerManager : MonoBehaviour
             {
                 OnlineMapsMarker temp = m_manager.Create(new Vector2(bn.lon, bn.lat), BN_texture, "BN:" + bn.id);
                 temp.scale = 0.1f;
+                bn.marker = temp;
                 temp.OnClick += OnMarkerClick;
                 bn.isMarker = true;
             }
@@ -76,9 +78,10 @@ public class MarkerManager : MonoBehaviour
         {
             if (!dn.isMarker)
             {
-                OnlineMapsMarker temp = m_manager.Create(new Vector2(dn.lon, dn.lat), changeTextureColor(DN_texture,out dn.marker_color), "DN:" + dn.id);
-
+                OnlineMapsMarker temp = m_manager.Create(new Vector2(dn.lon, dn.lat), changeTextureColor(DN_texture, out dn.marker_color), "DN:" + dn.id);
                 temp.scale = 0.1f;
+                dn.marker = temp;
+
                 temp.OnClick += OnMarkerClick;
                 dn.isMarker = true;
             }
@@ -91,87 +94,73 @@ public class MarkerManager : MonoBehaviour
 
     private void updateMarker(Device_Status device)
     {
-
-        foreach (OnlineMapsMarker marker in m_manager.items)
+        if (new Vector2(device.lon, device.lat) != device.marker.position)
         {
-            if (marker.label != "" && marker.label != "FP")
-            {
-                if (device.id == marker.label.Split(':')[1])
-                {
-                    if (new Vector2(device.lon, device.lat) != marker.position)
-                    {
+            device.marker.SetPosition(device.lon, device.lat);
 
-                        marker.SetPosition(device.lon, device.lat);
-
-                        device.position_log.Add(marker.position);
-                        OnlineMaps.instance.Redraw();
-                        break;
-                    }
-                }
-            }
+            device.position_log.Add(device.marker.position);
+            OnlineMaps.instance.Redraw();
         }
     }
 
-  
+
 
     //click on marker event
     private void OnMarkerClick(OnlineMapsMarkerBase marker)
     {
-
-        if (current_target_marker == null || current_target_marker.label == "") //nothing is currently selected...
+        if (current_target_status == null) //nothing is currently selected...
         {
             OnlineMapsMarker next_marker = getMarker(marker.label);
+            string[] tempstr = next_marker.label.Split(':');
+            current_target_status = WSManager.GetDevice(tempstr[1], tempstr[0]);
+
             current_target_old_texture = CopyTexture(next_marker.texture);
             next_marker.texture = OverlayCurrentTarget(next_marker.texture); //add target texture overlay
 
             next_marker.scale = next_marker.scale * 2;
 
-            string[] tempstr = next_marker.label.Split(':');
-            current_target_marker_status = WSManager.GetDevice(tempstr[1], tempstr[0]);
-            current_target_marker_color = current_target_marker_status.marker_color;
-
-            current_target_marker = next_marker;
-            FocusWindow.updateText(current_target_marker_status);
+            current_target_status = WSManager.GetDevice(tempstr[1], tempstr[0]);
+            current_target_marker_color = current_target_status.marker_color;
+            FocusWindow.updateText(current_target_status);
 
 
         }
         else //something is currently selected
         {
-            if (current_target_marker.label != marker.label) // if a new target has been clicked on
+            if (current_target_status.marker.label != marker.label) // if a new target has been clicked on
             {
                 //revert to base texture
-
-                current_target_marker.texture = CopyTexture(current_target_old_texture);
+                current_target_status.marker.texture = CopyTexture(current_target_old_texture);
 
                 //scale back down
-                current_target_marker.scale = current_target_marker.scale / 2;
+                current_target_status.marker.scale = current_target_status.marker.scale / 2;
+
 
                 OnlineMapsMarker next_marker = getMarker(marker.label);
                 string[] tempstr = next_marker.label.Split(':');
-                current_target_marker_status = WSManager.GetDevice(tempstr[1], tempstr[0]);
-                current_target_marker_color = current_target_marker_status.marker_color;
+                current_target_status = WSManager.GetDevice(tempstr[1], tempstr[0]);
+                current_target_marker_color = current_target_status.marker_color;
 
                 current_target_old_texture = CopyTexture(next_marker.texture);
                 next_marker.texture = OverlayCurrentTarget(next_marker.texture); //add target texture overlay
 
                 next_marker.scale = next_marker.scale * 2;
 
-                current_target_marker = next_marker;
-                FocusWindow.updateText(current_target_marker_status);
+
+                FocusWindow.updateText(current_target_status);
 
             }
             else //toggle off current selection meaning that the previous target is the same as the one we just clicked on.
             {
-             
-                current_target_marker.texture = CopyTexture(current_target_old_texture);
+
+                current_target_status.marker.texture = CopyTexture(current_target_old_texture);
 
                 //scale back down
-                current_target_marker.scale = current_target_marker.scale / 2;
-                current_target_marker = null;
-                UI.path_is_drawn = false;
+                current_target_status.marker.scale = current_target_status.marker.scale / 2;
+                current_target_status = null;
+               
                 FocusWindow.clearText();
             }
-            UI.ShowPath();
 
         }
     }
@@ -223,8 +212,8 @@ public class MarkerManager : MonoBehaviour
         output.SetPixels32(temppixels, 0);
         output.Apply();
         return output;
-    
-}
+
+    }
 
     private Texture2D GetBaseMarkerTexture(OnlineMapsMarker marker)
     {
@@ -251,7 +240,7 @@ public class MarkerManager : MonoBehaviour
 
         Color32[] pixels = tex.GetPixels32();
         Color32[] temppixels = new Color32[pixels.Length];
-      
+
         for (int i = 0; i < tex.height * tex.width; i++)
         {
             if (pixels[i].a != 0)
@@ -275,11 +264,11 @@ public class MarkerManager : MonoBehaviour
     public Texture2D changeTextureColor(Texture2D input, out Color32 newColor)
     {
         Color32[] pixels = input.GetPixels32();
-        Color32[] temppixels = new Color32[pixels.Length];newColor = new Color32(
-             (byte)UnityEngine.Random.Range(0, 255),        // R
-             (byte)UnityEngine.Random.Range(0, 255),        // G
-             (byte)UnityEngine.Random.Range(0, 255),        // B
-             200);      // A
+        Color32[] temppixels = new Color32[pixels.Length]; newColor = new Color32(
+              (byte)UnityEngine.Random.Range(0, 255),        // R
+              (byte)UnityEngine.Random.Range(0, 255),        // G
+              (byte)UnityEngine.Random.Range(0, 255),        // B
+              200);      // A
 
         for (int i = 0; i < input.height * input.width; i++)
         {

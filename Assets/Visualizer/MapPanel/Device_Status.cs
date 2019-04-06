@@ -25,15 +25,17 @@ public class Device_Status{
 	public float light;
 	public float co;
 
-    //public List<DevicePosition> position_log = new List<DevicePosition>();
+
     public List<Vector2> position_log = new List<Vector2>();
     public Color32 marker_color;
+    public OnlineMapsMarker marker;
+    public OnlineMapsDrawingLine line;
+    public bool path_is_drawn = false;
 	public bool isMarker = false;
 
 
 	public Device_Status(Current_Status input){
-		this.id = input.id;
-//		this.type = input.type; 
+        this.id = input.id;
 		this.lat = input.lat;
 		this.lon = input.lon;
 		this.alt = input.alt;
@@ -51,20 +53,29 @@ public class Device_Status{
 		this.time = input.time;
 		this.light = input.light;
 		this.co = input.co;
-
-//		this.position_log.Add (new DevicePosition(this.lat,this.lon));
 		this.lat = input.lat;
 		this.lon = input.lon;
 	}
 
 	public static bool operator == (Device_Status a, Device_Status b){
-		if (a.id == b.id) return true;
+        if (object.ReferenceEquals(a, null) &&  !object.ReferenceEquals(b, null)) return false;
+        if (!object.ReferenceEquals(a, null) && object.ReferenceEquals(b, null)) return false;
+        if (object.ReferenceEquals(a, null) && object.ReferenceEquals(b, null)) return true;
+        if (!object.ReferenceEquals(a, null) && !object.ReferenceEquals(b, null)) return true;
+
+
+        if (a.id == b.id) return true;
 
 		return false;
 
 	}
 	public static bool operator != (Device_Status a, Device_Status b){
-		if (a.id != b.id) return true;
+        if (object.ReferenceEquals(a, null) && !object.ReferenceEquals(b, null)) return true;
+        if (!object.ReferenceEquals(a, null) && object.ReferenceEquals(b, null)) return true;
+        if (object.ReferenceEquals(a, null) && object.ReferenceEquals(b, null)) return false;
+        if (!object.ReferenceEquals(a, null) && !object.ReferenceEquals(b, null)) return false;
+
+        if (a.id != b.id) return true;
 		return false;
 
 	}
@@ -79,16 +90,5 @@ public class Device_Status{
             + "\nTemperature: " + this.temp
             + "\nCO: " + this.co;
     }
-    //public bool Equals(Object obj)
-    //{
-    //    Device_Status t = obj as Device_Status;
-    //    if(this.id ==t.id)
-    //        return true;
-    //    return false;
-    //}
-
-    //public override int GetHashCode()//fix later!
-    //{
-    //    return 1;
-    //}
+   
 }

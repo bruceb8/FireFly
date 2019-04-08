@@ -788,7 +788,6 @@
 "Assets/OverviewWindowControl.cs"
 "Assets/PanelControls.cs"
 "Assets/TerminalWindowControl.cs"
-"Assets/Visualizer/Device_status.cs"
 "Assets/Visualizer/MapPanel/Device_Status.cs"
 "Assets/Visualizer/MarkerManager.cs"
 "Assets/Visualizer/RestNetworkManager.cs"

@@ -23,8 +23,7 @@ public class Device_Status{
 	public float temp;
 	public string time;
 	public float light;
-	public float co;
-
+    public float co;
 
     public List<Vector2> position_log = new List<Vector2>();
     public Color32 marker_color;
@@ -61,8 +60,7 @@ public class Device_Status{
         if (object.ReferenceEquals(a, null) &&  !object.ReferenceEquals(b, null)) return false;
         if (!object.ReferenceEquals(a, null) && object.ReferenceEquals(b, null)) return false;
         if (object.ReferenceEquals(a, null) && object.ReferenceEquals(b, null)) return true;
-        if (!object.ReferenceEquals(a, null) && !object.ReferenceEquals(b, null)) return true;
-
+     
 
         if (a.id == b.id) return true;
 
@@ -73,7 +71,7 @@ public class Device_Status{
         if (object.ReferenceEquals(a, null) && !object.ReferenceEquals(b, null)) return true;
         if (!object.ReferenceEquals(a, null) && object.ReferenceEquals(b, null)) return true;
         if (object.ReferenceEquals(a, null) && object.ReferenceEquals(b, null)) return false;
-        if (!object.ReferenceEquals(a, null) && !object.ReferenceEquals(b, null)) return false;
+    
 
         if (a.id != b.id) return true;
 		return false;

@@ -8,7 +8,25 @@ public class RestNetworkManager : MonoBehaviour
 {
     public TerminalWindowControl terminal;
     public WSNetworkManager ws;
+    class Conditions
+    {
+        float high_temp;
+        int high_temp_id;
+        float high_co;
+        int high_co_id;
+        int nr_onscene;
+        int nr_beacons;
 
+        public override string ToString()
+        {
+            return "Tempurature High: " + high_temp
+                + "\nTempurature High ID: " + high_temp_id
+                + "\nCO High: " + high_co
+                + "\nCO High ID: " + high_co_id
+                + "\nNumber of Beacons on scene: " + nr_beacons
+                + "\nNumber of FireFighters on scene: " + nr_onscene;
+        }
+    }
     string address;
     void Start()
     {
@@ -37,6 +55,8 @@ public class RestNetworkManager : MonoBehaviour
             else
             {
                 Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
+                Conditions temp = JsonUtility.FromJson<Conditions>(webRequest.downloadHandler.text);
+                terminal.TerminalColorPrint("Current Server Recorded Conditions:\n" + temp.ToString(), Color.yellow);
             }
         }
     }

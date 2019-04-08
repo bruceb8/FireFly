@@ -645,7 +645,6 @@
     <Compile Include="Assets\OverviewWindowControl.cs" />
     <Compile Include="Assets\PanelControls.cs" />
     <Compile Include="Assets\TerminalWindowControl.cs" />
-    <Compile Include="Assets\Visualizer\Device_status.cs" />
     <Compile Include="Assets\Visualizer\MapPanel\Device_Status.cs" />
     <Compile Include="Assets\Visualizer\MarkerManager.cs" />
     <Compile Include="Assets\Visualizer\RestNetworkManager.cs" />

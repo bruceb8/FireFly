@@ -130,24 +130,27 @@ public class UIFunctions : MonoBehaviour
     //will draw the current position log of currently selected device
     public void TogglePath()
     {
-        //Device_Status current = local_m_manager.current_target_status;
-        if (!local_m_manager.current_target_status.path_is_drawn)
+        if (local_m_manager.current_target_status != null)
         {
-            if (local_m_manager.current_target_status != null)
+            //Device_Status current = local_m_manager.current_target_status;
+            if (!local_m_manager.current_target_status.path_is_drawn)
             {
-           
-                line_drawer = new OnlineMapsDrawingLine(local_m_manager.current_target_status.position_log, local_m_manager.current_target_status.marker_color, 5);
-               
-                //Debug.Log("Creating line");
-                OnlineMapsDrawingElementManager.AddItem(line_drawer);
-                local_m_manager.current_target_status.line = line_drawer;
-                local_m_manager.current_target_status.path_is_drawn = true;
+                if (local_m_manager.current_target_status != null)
+                {
+
+                    line_drawer = new OnlineMapsDrawingLine(local_m_manager.current_target_status.position_log, local_m_manager.current_target_status.marker_color, 5);
+
+                    //Debug.Log("Creating line");
+                    OnlineMapsDrawingElementManager.AddItem(line_drawer);
+                    local_m_manager.current_target_status.line = line_drawer;
+                    local_m_manager.current_target_status.path_is_drawn = true;
+                }
             }
-        }
-        else
-        {
-            local_m_manager.current_target_status.path_is_drawn = false;
-            OnlineMapsDrawingElementManager.RemoveItem(local_m_manager.current_target_status.line);
+            else
+            {
+                local_m_manager.current_target_status.path_is_drawn = false;
+                OnlineMapsDrawingElementManager.RemoveItem(local_m_manager.current_target_status.line);
+            }
         }
     }
   

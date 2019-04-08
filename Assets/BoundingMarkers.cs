@@ -5,7 +5,17 @@ using UnityEngine;
 using System;
 using System.Text;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.Networking;
+
+public class path{
+    public double[] lat;
+    public double[] lng;
+    public double alt;
+    public double cycles;
+
+}
+
 
 
 namespace InfinityCode.OnlineMapsExamples
@@ -18,6 +28,8 @@ namespace InfinityCode.OnlineMapsExamples
 
             public GameObject map;
 
+            public TerminalWindowControl terminal;
+
             public GameObject inputAltitude;
             private OnlineMaps m;
             private OnlineMapsMarkerManager m_manager;
@@ -26,6 +38,8 @@ namespace InfinityCode.OnlineMapsExamples
             public OnlineMapsMarker m1; 
 
             public OnlineMapsMarker mStart;
+
+            public OnlineMapsDrawingLine pathLine;
 
 
 
@@ -136,6 +150,9 @@ namespace InfinityCode.OnlineMapsExamples
 
         public void clearMarkers(){
             currentMarker = 0;
+            if(pathLine != null){
+                OnlineMapsDrawingElementManager.RemoveItem(pathLine);
+            }
             // m0.SetPosition(0,0);
             // m1.SetPosition(0,0);
             // mStart.SetPosition(0,0);
@@ -163,12 +180,40 @@ namespace InfinityCode.OnlineMapsExamples
             cycles = int.Parse(theInput);
         }
 
+        private void flightPath(path thePath){
+            //Now we need to iterate through the list of paired lat longs
+            //And draw lines between each point in order.
+            List<Vector2> pathCoord = new List<Vector2>();
+
+            for(int i = 0; i < thePath.lat.Length; i++){
+                
+                Debug.Log(thePath.lat[i]);
+                Debug.Log(thePath.lng[i]);
+
+                pathCoord.Add(new Vector2((float) thePath.lat[i],(float) thePath.lng[i]));
+                
+            }
+
+            //if path isnt null, clear it
+            if(pathLine != null){
+                OnlineMapsDrawingElementManager.RemoveItem(pathLine);
+            }
+
+
+            pathLine = new OnlineMapsDrawingLine(pathCoord, Color.red, 5);
+            OnlineMapsDrawingElementManager.AddItem(pathLine);
+
+            
+
+        }
+
         public void SendGeofence()
         {
             var request = new UnityWebRequest(url, "POST");
 
             //Now we have to build the JSON string from the beacons
-            string test = "{\"lats\":\""+ mStart.position.x 
+            string test = 
+            "{\"lats\":\""+ mStart.position.x 
             +"\",\"lngs\":\"" + mStart.position.y + "\","
             +"\"lat0\":\"" + m0.position.x + "\","
             +"\"lng0\":\"" + m0.position.y + "\","
@@ -181,26 +226,54 @@ namespace InfinityCode.OnlineMapsExamples
             +"\"alt\":\"" + altitude + "\","
             +"\"cycles\":\"" + cycles + "\"}";
 
+
+            test = "{\"lat\":[\"" + mStart.position.x + "\",\"" 
+            + m0.position.x + "\",\""
+            + m0.position.x + "\",\""
+            + m1.position.x + "\",\""
+            + m1.position.x + "\"],"
+            +"\"lng\":[\"" + mStart.position.y + "\",\"" 
+            + m0.position.y + "\",\""
+            + m1.position.y + "\",\""
+            + m1.position.y + "\",\""
+            + m0.position.y + "\"], "
+            + "\"alt\":\"" + altitude + "\","
+            + "\"cycles\":\"" + cycles + "\"}";
+
             byte[] bodyRaw = Encoding.UTF8.GetBytes(test);
             request.uploadHandler = (UploadHandler) new UploadHandlerRaw(bodyRaw);
-            request.downloadHandler = (DownloadHandler) new DownloadHandlerBuffer();
+            request.downloadHandler = new DownloadHandlerBuffer();
 
-            request.SetRequestHeader("Content-Type", "test/plain");
+            request.SetRequestHeader("Content-Type", "text/plain");
+            
 
             
 
             if(isPlaced == true){
                 request.SendWebRequest();
-
+                while(request.isDone != true){}
                 Debug.Log("Status Code: " + request.responseCode);
+                string response = request.downloadHandler.text;
+                terminal.TerminalPrint(test);
+                path mypath = JsonUtility.FromJson<path>(response);
+
+                Debug.Log(mypath.lat[0]);
+
+                flightPath(mypath);
             }else{
                 Debug.Log("Y'all didnt place nothin");
             }
+     
+
+            
+            
 
 
 
         }
     }
+
+    
 
 
 }

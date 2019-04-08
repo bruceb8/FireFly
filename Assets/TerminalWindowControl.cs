@@ -41,6 +41,7 @@ public class TerminalWindowControl : MonoBehaviour
         toPrint += "\n";
         TerminalWindowText.text += toPrint;
     }
+
     public void TerminalPrint(string message) {
         nlines++;
         string toPrint = "> ";

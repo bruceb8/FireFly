@@ -1,9 +1,9 @@
 ﻿<Properties StartupConfiguration="{E9466C38-096A-0965-85B6-05C0FB580B85}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Visualizer/MarkerManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Menu/StartVisualizer.cs">
     <Files>
-      <File FileName="Assets/Visualizer/MapPanel/Device_Status.cs" Line="12" Column="3" />
-      <File FileName="Assets/Visualizer/MarkerManager.cs" Line="49" Column="1" />
-      <File FileName="Assets/MarkerTextureUtility.cs" Line="135" Column="5" />
+      <File FileName="Assets/Menu/SettingsController.cs" Line="5" Column="1" />
+      <File FileName="Assets/Menu/StartVisualizer.cs" Line="1" Column="1" />
+      <File FileName="Assets/PanelControls.cs" Line="26" Column="75" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -18,14 +18,10 @@
                 </Node>
               </Node>
               <Node name="Mapbox" expanded="True">
-                <Node name="Unity" expanded="True">
-                  <Node name="Telemetry" expanded="True" />
-                </Node>
+                <Node name="Unity" expanded="True" />
               </Node>
-              <Node name="Menu" expanded="True" />
-              <Node name="Visualizer" expanded="True">
-                <Node name="MapPanel" expanded="True" />
-                <Node name="MarkerManager.cs" selected="True" />
+              <Node name="Menu" expanded="True">
+                <Node name="StartVisualizer.cs" selected="True" />
               </Node>
             </Node>
           </Node>

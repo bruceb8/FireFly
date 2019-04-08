@@ -3,26 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
-
-//Script File 1 of 2 for the Menu Scene 
-//This handles the start button
-
 public class StartVisualizer : MonoBehaviour {
 
     public GameObject LoadingPrefab;
     public GameObject UICanvas;
-    
-    
-    // Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     public void Startup()//This is called from the Start button in the Menu Scene
     {

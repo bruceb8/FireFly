@@ -22,7 +22,12 @@ public class TerminalWindowControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //CheckForTerminalMessage();
+    }
+
+    public void CheckForTerminalMessage()
+    {
+        TerminalColorPrint(WS.TMQueue.Dequeue(),Color.green);
     }
     public void TerminalColorPrint(string message, Color text_color)
     {

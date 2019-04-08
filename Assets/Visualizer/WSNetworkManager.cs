@@ -25,7 +25,7 @@ public class Current_Status
 public class WSNetworkManager : MonoBehaviour
 {
     WebSocket ws;
-  
+    public RestNetworkManager RestManager;
     string wsAddress;
 
     public static string ip = "localhost";
@@ -50,26 +50,35 @@ public class WSNetworkManager : MonoBehaviour
 
     // Use this for initialization of the WebSocket
     void Start(){
+
+        RestManager = this.GetComponent<RestNetworkManager>();
+
         ip = PlayerPrefs.GetString("ServerIP");
         port = PlayerPrefs.GetString("ServerPort");
         wsAddress = "ws://" + ip + ":" + port;//this is the address for the javascript node server...
 
         ws = new WebSocket(wsAddress);//create new websocket with address from player prefs
       
-        ws.Connect();//Establish a websocket connection to the server.
 
         //Functions are defined below and are set as function pointers of the Websocket object
         ws.OnOpen += Ws_OnOpen;
         ws.OnMessage += Ws_OnMessage;
         ws.OnClose += Ws_OnClose;
         ws.OnError += Ws_OnError;
+
+        terminal.TerminalColorPrint("Connecting to " + wsAddress, Color.yellow);
+        ws.Connect();//Establish a websocket connection to the server.
+
+        RestManager.GetREST("/conditions");
     }
-    private void Ws_OnOpen()
+    private void Ws_OnOpen(object sender, MessageEventArgs e)
     {
         connected = true;
-        terminal.TerminalColorPrint("Connected to websocket from server.", Color.green);
+        terminal.TerminalColorPrint("Connected to " + wsAddress, Color.green);
     }
-    private void Ws_OnError(object sender, ErrorEventArgs e){}
+    private void Ws_OnError(object sender, ErrorEventArgs e){
+        terminal.TerminalColorPrint(e.Message, Color.red);
+    }
 
     private void Ws_OnClose(object sender, CloseEventArgs e)
     {
@@ -78,70 +87,70 @@ public class WSNetworkManager : MonoBehaviour
 
     private void Ws_OnMessage(object sender, MessageEventArgs e)
     {
-
+       
         connected = true;
         
         WebMessage message = JsonUtility.FromJson<WebMessage>(e.Data);
-
-        Current_Status incoming_device = JsonUtility.FromJson<Current_Status>(message.body);
-
-        Device_Status temp_device = new Device_Status(incoming_device);
-
         //Debug.Log(message.body);
-        int index = -1;
-        if (message.type == "ff" || message.type == "FF")
+        if (message.type == "terminal")
         {
-
-            index = findDeviceByID(temp_device, 1);
-            if (index >= 0)
-            {
-                firefighters[index].updateStatus(temp_device);
-
-            }
-            else
-            {
-                temp_device.position_log.Add(new Vector2(temp_device.lon, temp_device.lat));
-                firefighters.Add(temp_device);
-                terminal.TerminalColorPrint("Added firefighter with id: " + temp_device.id, Color.cyan);
-
-            }
+            terminal.TerminalColorPrint(message.body, Color.green);
         }
-        else if (message.type == "bn" || message.type == "BN")
+        else
         {
-            index = findDeviceByID(temp_device, 2);
-            if (index >= 0)
+            Current_Status incoming_device = JsonUtility.FromJson<Current_Status>(message.body);
+
+            Device_Status temp_device = new Device_Status(incoming_device);
+
+            int index = -1;
+            if (message.type == "ff" || message.type == "FF")
             {
-                beacons[index].updateStatus(temp_device);
+
+                index = findDeviceByID(temp_device, 1);
+                if (index >= 0)
+                {
+                    firefighters[index].updateStatus(temp_device);
+
+                }
+                else
+                {
+                    temp_device.position_log.Add(new Vector2(temp_device.lon, temp_device.lat));
+                    firefighters.Add(temp_device);
+                    terminal.TerminalColorPrint("Added firefighter with id: " + temp_device.id, Color.cyan);
+
+                }
             }
-            else
+            else if (message.type == "bn" || message.type == "BN")
             {
-                temp_device.position_log.Add(new Vector2(temp_device.lon, temp_device.lat));
+                index = findDeviceByID(temp_device, 2);
+                if (index >= 0)
+                {
+                    beacons[index].updateStatus(temp_device);
+                }
+                else
+                {
+                    temp_device.position_log.Add(new Vector2(temp_device.lon, temp_device.lat));
 
-                beacons.Add(temp_device);
-                terminal.TerminalColorPrint("Added beacon with id: " + temp_device.id, Color.cyan);
-
+                    beacons.Add(temp_device);
+                    terminal.TerminalColorPrint("Added beacon with id: " + temp_device.id, Color.cyan);
+                }
 
             }
-
-        }
-        else if (message.type == "dn" || message.type == "DN")
-        {
-            index = findDeviceByID(temp_device, 3);
-            if (index >= 0)
+            else if (message.type == "dn" || message.type == "DN")
             {
-                drones[index].updateStatus(temp_device);
-            }
-            else
-            {
-                temp_device.position_log.Add(new Vector2(temp_device.lon, temp_device.lat));
+                index = findDeviceByID(temp_device, 3);
+                if (index >= 0)
+                {
+                    drones[index].updateStatus(temp_device);
+                }
+                else
+                {
+                    temp_device.position_log.Add(new Vector2(temp_device.lon, temp_device.lat));
 
-                drones.Add(temp_device);
-                terminal.TerminalColorPrint("Added drone with id: " + temp_device.id, Color.cyan);
+                    drones.Add(temp_device);
+                    terminal.TerminalColorPrint("Added drone with id: " + temp_device.id, Color.cyan);
+                }
             }
-        }
-        else if (message.type == "terminal")
-        {
-            TMQueue.Enqueue(message.body);
         }
     }
 

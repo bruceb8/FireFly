@@ -644,11 +644,11 @@
     <Compile Include="Assets\Menu\StartVisualizer.cs" />
     <Compile Include="Assets\OverviewWindowControl.cs" />
     <Compile Include="Assets\PanelControls.cs" />
-    <Compile Include="Assets\RestNetworkManager.cs" />
     <Compile Include="Assets\TerminalWindowControl.cs" />
     <Compile Include="Assets\Visualizer\Device_status.cs" />
     <Compile Include="Assets\Visualizer\MapPanel\Device_Status.cs" />
     <Compile Include="Assets\Visualizer\MarkerManager.cs" />
+    <Compile Include="Assets\Visualizer\RestNetworkManager.cs" />
     <Compile Include="Assets\Visualizer\UIFunctions.cs" />
     <Compile Include="Assets\Visualizer\WSNetworkManager.cs" />
     <None Include="Assets\Resources\Mapbox\MapboxConfiguration.txt" />

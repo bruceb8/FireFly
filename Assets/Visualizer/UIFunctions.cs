@@ -14,7 +14,6 @@ public class UIFunctions : MonoBehaviour
 
     public bool all_paths_shown;
 
-
     // Start is called before the first frame update
     void Start()
     {

@@ -9,6 +9,7 @@ public class OverviewWindowControl : MonoBehaviour
 
     public Text OverviewField;
     public WSNetworkManager WS;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +38,7 @@ public class OverviewWindowControl : MonoBehaviour
             output += "> Number of Drones: " + WS.drones.Count + "\n";
 
         }
+
         OverviewField.text = output;
     }
 }

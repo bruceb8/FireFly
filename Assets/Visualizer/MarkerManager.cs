@@ -10,7 +10,9 @@ public class MarkerManager : MonoBehaviour
     private OnlineMaps m;
     private OnlineMapsMarkerManager m_manager;
     public WSNetworkManager WSManager;
-    private Texture2D FF_texture, BN_texture, DN_texture, Currently_Selected;
+
+    public MarkerTextureUtility m_texture;
+
     public FocusWindowController FocusWindow;
     public UIFunctions UI;
 
@@ -23,11 +25,8 @@ public class MarkerManager : MonoBehaviour
     {
         m = map.GetComponent<OnlineMaps>();
         m_manager = map.GetComponent<OnlineMapsMarkerManager>();
+        m_texture = this.GetComponent<MarkerTextureUtility>();
 
-        FF_texture = Resources.Load<Texture2D>("Square2");
-        BN_texture = Resources.Load<Texture2D>("triangle");
-        DN_texture = Resources.Load<Texture2D>("circle");
-        Currently_Selected = Resources.Load<Texture2D>("target");
     }
 
     // Update is called once per frame
@@ -47,7 +46,7 @@ public class MarkerManager : MonoBehaviour
         {
             if (!ff.isMarker)
             {
-                OnlineMapsMarker temp = m_manager.Create(new Vector2(ff.lon, ff.lat), changeTextureColor(FF_texture, out ff.marker_color), "FF:" + ff.id);
+                OnlineMapsMarker temp = m_manager.Create(new Vector2(ff.lon, ff.lat), m_texture.changeTextureColor(m_texture.FF_texture, out ff.marker_color), "FF:" + ff.id);
                 temp.scale = 0.1f;
                 ff.marker = temp;
 
@@ -63,7 +62,7 @@ public class MarkerManager : MonoBehaviour
         {
             if (!bn.isMarker)
             {
-                OnlineMapsMarker temp = m_manager.Create(new Vector2(bn.lon, bn.lat), BN_texture, "BN:" + bn.id);
+                OnlineMapsMarker temp = m_manager.Create(new Vector2(bn.lon, bn.lat), m_texture.BN_texture, "BN:" + bn.id);
                 temp.scale = 0.1f;
                 bn.marker = temp;
                 temp.OnClick += OnMarkerClick;
@@ -78,7 +77,7 @@ public class MarkerManager : MonoBehaviour
         {
             if (!dn.isMarker)
             {
-                OnlineMapsMarker temp = m_manager.Create(new Vector2(dn.lon, dn.lat), changeTextureColor(DN_texture, out dn.marker_color), "DN:" + dn.id);
+                OnlineMapsMarker temp = m_manager.Create(new Vector2(dn.lon, dn.lat), m_texture.changeTextureColor(m_texture.DN_texture, out dn.marker_color), "DN:" + dn.id);
                 temp.scale = 0.1f;
                 dn.marker = temp;
 
@@ -103,8 +102,6 @@ public class MarkerManager : MonoBehaviour
         }
     }
 
-
-
     //click on marker event
     private void OnMarkerClick(OnlineMapsMarkerBase marker)
     {
@@ -114,8 +111,8 @@ public class MarkerManager : MonoBehaviour
             string[] tempstr = next_marker.label.Split(':');
             current_target_status = WSManager.GetDevice(tempstr[1], tempstr[0]);
 
-            current_target_old_texture = CopyTexture(next_marker.texture);
-            next_marker.texture = OverlayCurrentTarget(next_marker.texture); //add target texture overlay
+            current_target_old_texture = m_texture.CopyTexture(next_marker.texture);
+            next_marker.texture = m_texture.OverlayCurrentTarget(next_marker.texture); //add target texture overlay
 
             next_marker.scale = next_marker.scale * 2;
 
@@ -130,7 +127,7 @@ public class MarkerManager : MonoBehaviour
             if (current_target_status.marker.label != marker.label) // if a new target has been clicked on
             {
                 //revert to base texture
-                current_target_status.marker.texture = CopyTexture(current_target_old_texture);
+                current_target_status.marker.texture = m_texture.CopyTexture(current_target_old_texture);
 
                 //scale back down
                 current_target_status.marker.scale = current_target_status.marker.scale / 2;
@@ -141,8 +138,8 @@ public class MarkerManager : MonoBehaviour
                 current_target_status = WSManager.GetDevice(tempstr[1], tempstr[0]);
                 current_target_marker_color = current_target_status.marker_color;
 
-                current_target_old_texture = CopyTexture(next_marker.texture);
-                next_marker.texture = OverlayCurrentTarget(next_marker.texture); //add target texture overlay
+                current_target_old_texture = m_texture.CopyTexture(next_marker.texture);
+                next_marker.texture = m_texture.OverlayCurrentTarget(next_marker.texture); //add target texture overlay
 
                 next_marker.scale = next_marker.scale * 2;
 
@@ -153,7 +150,7 @@ public class MarkerManager : MonoBehaviour
             else //toggle off current selection meaning that the previous target is the same as the one we just clicked on.
             {
 
-                current_target_status.marker.texture = CopyTexture(current_target_old_texture);
+                current_target_status.marker.texture = m_texture.CopyTexture(current_target_old_texture);
 
                 //scale back down
                 current_target_status.marker.scale = current_target_status.marker.scale / 2;
@@ -164,6 +161,25 @@ public class MarkerManager : MonoBehaviour
 
         }
     }
+
+    public double GetMaxTemp() {
+
+        double maxtemp = 0;
+        foreach (Device_Status ff in WSManager.firefighters)
+        {
+            if (ff.temp >= maxtemp) maxtemp = ff.temp;
+        }
+        foreach(Device_Status bn in WSManager.beacons) {
+            if (bn.temp >= maxtemp) maxtemp = bn.temp;
+        }
+        foreach(Device_Status dn in WSManager.drones)
+        {
+            if (dn.temp >= maxtemp) maxtemp = dn.temp;
+        }
+        return maxtemp;
+    }
+
+
     private OnlineMapsMarker getMarker(string label)
     {
         foreach (OnlineMapsMarker marker in m_manager.items)
@@ -173,118 +189,4 @@ public class MarkerManager : MonoBehaviour
         return null;
     }
 
-    private Texture2D OverlayCurrentTarget(Texture2D input)
-    {
-        Color32[] pixels = input.GetPixels32(); //get current texture pixels
-        Color32[] current_pixels = Currently_Selected.GetPixels32();
-        Color32[] temppixels = new Color32[pixels.Length]; //empty texture
-        Color32 overlayColor = new Color32(255, 0, 0, 255);
-
-        for (int i = input.width * 5 + 1; i < input.width * input.height; i++)
-        {
-            if (current_pixels[i].a != 0)
-            {
-                temppixels[i] = overlayColor;
-            }
-            else
-            {
-                temppixels[i] = pixels[i];
-            }
-        }
-
-        Texture2D output = new Texture2D(input.width, input.height);
-        output.SetPixels32(temppixels, 0);
-        output.Apply();
-        return output;
-    }
-
-    private Texture2D CopyTexture(Texture2D input)
-    {
-        Color32[] pixels = input.GetPixels32();
-        Color32[] temppixels = new Color32[pixels.Length];
-
-        for (int i = 0; i < input.height * input.width; i++)
-        {
-            temppixels[i] = pixels[i];
-        }
-
-        Texture2D output = new Texture2D(input.width, input.height);
-        output.SetPixels32(temppixels, 0);
-        output.Apply();
-        return output;
-
-    }
-
-    private Texture2D GetBaseMarkerTexture(OnlineMapsMarker marker)
-    {
-        string markerID = marker.label;
-        StringComparison something = StringComparison.InvariantCulture;
-        if (markerID.StartsWith("FF:", something))
-        {
-            return FF_texture;
-        }
-
-        else if (markerID.StartsWith("BN:", something))
-        {
-            return BN_texture;
-        }
-        else if (markerID.StartsWith("DN:", something))
-        {
-            return DN_texture;
-        }
-        return null;
-
-    }
-    public Texture2D SetMarkerTextureColor(Color32 new_color, Texture2D tex)
-    {
-
-        Color32[] pixels = tex.GetPixels32();
-        Color32[] temppixels = new Color32[pixels.Length];
-
-        for (int i = 0; i < tex.height * tex.width; i++)
-        {
-            if (pixels[i].a != 0)
-            {
-                temppixels[i] = new_color;
-            }
-            else
-            {
-                temppixels[i] = pixels[i];
-            }
-        }
-
-        Texture2D output = new Texture2D(tex.width, tex.height);
-        output.SetPixels32(temppixels, 0);
-        output.Apply();
-        return output;
-    }
-
-    //Make a random color for the the device textures. This is assumes simple 
-    //textures such that a non transparent color will be changed by this function.
-    public Texture2D changeTextureColor(Texture2D input, out Color32 newColor)
-    {
-        Color32[] pixels = input.GetPixels32();
-        Color32[] temppixels = new Color32[pixels.Length]; newColor = new Color32(
-              (byte)UnityEngine.Random.Range(0, 255),        // R
-              (byte)UnityEngine.Random.Range(0, 255),        // G
-              (byte)UnityEngine.Random.Range(0, 255),        // B
-              200);      // A
-
-        for (int i = 0; i < input.height * input.width; i++)
-        {
-            if (pixels[i].a != 0)
-            {
-                temppixels[i] = newColor;
-            }
-            else
-            {
-                temppixels[i] = pixels[i];
-            }
-        }
-
-        Texture2D output = new Texture2D(input.width, input.height);
-        output.SetPixels32(temppixels, 0);
-        output.Apply();
-        return output;
-    }
 }

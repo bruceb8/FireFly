@@ -639,12 +639,14 @@
     <Compile Include="Assets\Mapbox\Unity\Utilities\TelemetryConfigurationButton.cs" />
     <Compile Include="Assets\Mapbox\Unity\Utilities\VectorEntity.cs" />
     <Compile Include="Assets\Mapbox\Unity\Utilities\VectorExtensions.cs" />
+    <Compile Include="Assets\MarkerTextureUtility.cs" />
     <Compile Include="Assets\Menu\SettingsController.cs" />
     <Compile Include="Assets\Menu\StartVisualizer.cs" />
     <Compile Include="Assets\OverviewWindowControl.cs" />
     <Compile Include="Assets\PanelControls.cs" />
     <Compile Include="Assets\RestNetworkManager.cs" />
     <Compile Include="Assets\TerminalWindowControl.cs" />
+    <Compile Include="Assets\Visualizer\Device_status.cs" />
     <Compile Include="Assets\Visualizer\MapPanel\Device_Status.cs" />
     <Compile Include="Assets\Visualizer\MarkerManager.cs" />
     <Compile Include="Assets\Visualizer\UIFunctions.cs" />

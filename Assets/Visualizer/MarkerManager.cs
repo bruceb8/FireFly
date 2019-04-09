@@ -118,7 +118,7 @@ public class MarkerManager : MonoBehaviour
 
             current_target_status = WSManager.GetDevice(tempstr[1], tempstr[0]);
             current_target_marker_color = current_target_status.marker_color;
-            FocusWindow.updateText(current_target_status);
+            //FocusWindow.updateText(current_target_status);
 
 
         }
@@ -144,7 +144,7 @@ public class MarkerManager : MonoBehaviour
                 next_marker.scale = next_marker.scale * 2;
 
 
-                FocusWindow.updateText(current_target_status);
+                //FocusWindow.updateText(current_target_status);
 
             }
             else //toggle off current selection meaning that the previous target is the same as the one we just clicked on.
@@ -156,7 +156,7 @@ public class MarkerManager : MonoBehaviour
                 current_target_status.marker.scale = current_target_status.marker.scale / 2;
                 current_target_status = null;
                
-                FocusWindow.clearText();
+                //FocusWindow.clearText();
             }
 
         }

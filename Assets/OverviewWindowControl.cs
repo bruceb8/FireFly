@@ -9,18 +9,13 @@ public class OverviewWindowControl : MonoBehaviour
 
     public Text OverviewField;
     public WSNetworkManager WS;
-
+    public MarkerManager MS;
     // Start is called before the first frame update
     void Start()
     {
         InvokeRepeating("UpdateWindowText", 1, 1);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void UpdateWindowText()
     {
         string output = "";
@@ -38,7 +33,8 @@ public class OverviewWindowControl : MonoBehaviour
             output += "> Number of Drones: " + WS.drones.Count + "\n";
 
         }
-
+        output += "> Maximum Temperature from devices: " + MS.GetMaxTemp() + "\n";
+        output += "> Maximum CO from devices: " + MS.GetMaxCO() + "\n";
         OverviewField.text = output;
     }
 }

@@ -15,9 +15,6 @@ public class MarkerTextureUtility : MonoBehaviour
         Currently_Selected = Resources.Load<Texture2D>("target");
     }
 
-    // Update is called once per frame
-    void Update() { }
-
     public Texture2D OverlayCurrentTarget(Texture2D input)
     {
         Color32[] pixels = input.GetPixels32(); //get current texture pixels

@@ -179,7 +179,23 @@ public class MarkerManager : MonoBehaviour
         return maxtemp;
     }
 
-
+    public double GetMaxCO()
+    {
+        double maxco = 0;
+        foreach (Device_Status ff in WSManager.firefighters)
+        {
+            if (ff.co >= maxco) maxco = ff.temp;
+        }
+        foreach (Device_Status bn in WSManager.beacons)
+        {
+            if (bn.co >= maxco) maxco = bn.temp;
+        }
+        foreach (Device_Status dn in WSManager.drones)
+        {
+            if (dn.co >= maxco) maxco = dn.temp;
+        }
+        return maxco;
+    }
     private OnlineMapsMarker getMarker(string label)
     {
         foreach (OnlineMapsMarker marker in m_manager.items)

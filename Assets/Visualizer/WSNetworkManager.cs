@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using WebSocketSharp;
@@ -24,9 +25,9 @@ public class Current_Status
 
 public class WSNetworkManager : MonoBehaviour
 {
-    WebSocket ws;
+    public WebSocket ws;
     public RestNetworkManager RestManager;
-    string wsAddress;
+    public string wsAddress;
 
     public static string ip = "localhost";
     public static string port = "8080";
@@ -48,19 +49,10 @@ public class WSNetworkManager : MonoBehaviour
         public string body;
     }
 
-    // Use this for initialization of the WebSocket
-    void Start(){
-
-        RestManager = this.GetComponent<RestNetworkManager>();
-
-        ip = PlayerPrefs.GetString("ServerIP");
-        port = PlayerPrefs.GetString("ServerPort");
-        wsAddress = "ws://" + ip + ":" + port;//this is the address for the javascript node server...
-
+    public void startWebsocketConnection()
+    {
         ws = new WebSocket(wsAddress);//create new websocket with address from player prefs
-      
 
-        //Functions are defined below and are set as function pointers of the Websocket object
         ws.OnOpen += Ws_OnOpen;
         ws.OnMessage += Ws_OnMessage;
         ws.OnClose += Ws_OnClose;
@@ -68,9 +60,17 @@ public class WSNetworkManager : MonoBehaviour
 
         terminal.TerminalColorPrint("Connecting to " + wsAddress, Color.yellow);
         ws.Connect();//Establish a websocket connection to the server.
-
-        RestManager.GetREST("/conditions");
     }
+    // Use this for initialization of the WebSocket
+    void Start(){
+        ip = PlayerPrefs.GetString("ServerIP");
+        port = PlayerPrefs.GetString("ServerPort");
+        wsAddress = "ws://" + ip + ":" + port;//this is the address for the javascript node server...
+
+        RestManager = this.GetComponent<RestNetworkManager>();
+        RestManager.GetREST("/positions");
+    }
+
     private void Ws_OnOpen(object sender, MessageEventArgs e)
     {
         connected = true;
@@ -89,7 +89,7 @@ public class WSNetworkManager : MonoBehaviour
     {
        
         connected = true;
-        
+
         WebMessage message = JsonUtility.FromJson<WebMessage>(e.Data);
         //Debug.Log(message.body);
         if (message.type == "terminal")
@@ -99,13 +99,11 @@ public class WSNetworkManager : MonoBehaviour
         else
         {
             Current_Status incoming_device = JsonUtility.FromJson<Current_Status>(message.body);
-
             Device_Status temp_device = new Device_Status(incoming_device);
 
             int index = -1;
             if (message.type == "ff" || message.type == "FF")
             {
-
                 index = findDeviceByID(temp_device, 1);
                 if (index >= 0)
                 {
@@ -114,7 +112,7 @@ public class WSNetworkManager : MonoBehaviour
                 }
                 else
                 {
-                    temp_device.position_log.Add(new Vector2(temp_device.lon, temp_device.lat));
+           
                     firefighters.Add(temp_device);
                     terminal.TerminalColorPrint("Added firefighter with id: " + temp_device.id, Color.cyan);
 
@@ -265,6 +263,4 @@ public class WSNetworkManager : MonoBehaviour
         }
         return -1;
     }
-    // Update is called once per frame
-    void Update(){}
 }

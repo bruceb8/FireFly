@@ -32,8 +32,14 @@ public class Device_Status{
     public bool path_is_drawn = false;
 	public bool isMarker = false;
 
+    public Device_Status(string id, string type, List<Vector2> positions)
+    {
+        this.id = id;
+        this.type = type;
+        this.position_log = positions;
+    }
 
-	public Device_Status(Current_Status input){
+    public Device_Status(Current_Status input){
         this.id = input.id;
 		this.lat = input.lat;
 		this.lon = input.lon;

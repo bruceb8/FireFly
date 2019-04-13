@@ -396,7 +396,26 @@ namespace InfinityCode.OnlineMapsExamples
 
         }
 
-        
+        public void landDrone(){
+            url = "http://" + PlayerPrefs.GetString("ServerIP") + ":" + "8080/appLand"; 
+            var request = new UnityWebRequest(url, "POST");
+            byte[] bodyRaw = Encoding.UTF8.GetBytes("{\"drone\":\"id placeholder\"}");
+            request.uploadHandler = (UploadHandler) new UploadHandlerRaw(bodyRaw);
+            request.downloadHandler = new DownloadHandlerBuffer();
+
+            request.SetRequestHeader("Content-Type", "text/plain");
+            
+
+            
+
+            if(pathRecieve == true){
+                request.SendWebRequest();
+                while(request.isDone != true){}
+                isFlying = true;
+            } else{
+                terminal.TerminalPrint("Path was not recieved by the server.");
+            }
+        }
 
 
         public void startFlight(){

@@ -132,8 +132,7 @@ public class RestNetworkManager : MonoBehaviour
         for (int i = 0; i < ff.lat.Count; i++)
         {
             temp.Add(new Vector2(ff.lon[i], ff.lat[i]));
-            terminal.TerminalColorPrint("Added Position!", Color.green);
-
+            //terminal.TerminalColorPrint("Added Position!", Color.green);
         }
         Device_Status status = new Device_Status(ff.id, "FF", temp);
         websocket.firefighters.Add(status);

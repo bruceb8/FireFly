@@ -1,11 +1,10 @@
 ﻿<Properties StartupConfiguration="{E9466C38-096A-0965-85B6-05C0FB580B85}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/TerminalWindowControl.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Visualizer/UIFunctions.cs">
     <Files>
-      <File FileName="Assets/Visualizer/RestNetworkManager.cs" Line="137" Column="9" />
-      <File FileName="Assets/Visualizer/WSNetworkManager.cs" Line="28" Column="25" />
-      <File FileName="Assets/Visualizer/MarkerManager.cs" Line="28" Column="63" />
+      <File FileName="Assets/Visualizer/RestNetworkManager.cs" Line="102" Column="1" />
       <File FileName="Assets/Visualizer/MapPanel/Device_Status.cs" Line="38" Column="26" />
       <File FileName="Assets/TerminalWindowControl.cs" Line="1" Column="1" />
+      <File FileName="Assets/Visualizer/UIFunctions.cs" Line="177" Column="10" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -15,8 +14,8 @@
               <Node name="Menu" expanded="True" />
               <Node name="Visualizer" expanded="True">
                 <Node name="MapPanel" expanded="True" />
+                <Node name="UIFunctions.cs" selected="True" />
               </Node>
-              <Node name="TerminalWindowControl.cs" selected="True" />
             </Node>
           </Node>
         </State>

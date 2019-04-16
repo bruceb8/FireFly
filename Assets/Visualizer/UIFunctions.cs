@@ -168,12 +168,18 @@ public class UIFunctions : MonoBehaviour
             foreach (Device_Status DN in WSManager.drones)
             {
                 OnlineMapsDrawingElementManager.AddItem(new OnlineMapsDrawingLine(DN.position_log, DN.marker_color, 5));
-
             }
         }
         else
         {
             OnlineMapsDrawingElementManager.RemoveAllItems();
         }
+    }
+
+    //Find shortest path to device from the beginning of their position log to the end of the log.
+    public void GetPathTo()
+    {
+
+
     }
 }

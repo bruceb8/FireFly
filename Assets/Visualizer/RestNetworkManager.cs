@@ -51,7 +51,6 @@ public class RestNetworkManager : MonoBehaviour
     public PositionsRecieved initial_pos;
     public Device_Positions ffs;
 
-    public bool got_positions = false;
     class Conditions
     {
         float high_temp;
@@ -101,7 +100,6 @@ public class RestNetworkManager : MonoBehaviour
             string[] pages = uri.Split('/');
             int page = pages.Length - 1;
 
-            got_positions = true;
             if (webRequest.isNetworkError)
             {
                 Debug.Log(pages[page] + ": Error: " + webRequest.error);
@@ -132,12 +130,11 @@ public class RestNetworkManager : MonoBehaviour
         for (int i = 0; i < ff.lat.Count; i++)
         {
             temp.Add(new Vector2(ff.lon[i], ff.lat[i]));
-            //terminal.TerminalColorPrint("Added Position!", Color.green);
+            terminal.TerminalColorPrint("Added Position!", Color.green); //some useless data to fill up the terminal window to test scrolling
         }
         Device_Status status = new Device_Status(ff.id, "FF", temp);
         websocket.firefighters.Add(status);
     }
-
 
     void HandleAction(Device_Positions dn)
     {

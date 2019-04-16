@@ -1,10 +1,10 @@
 ﻿<Properties StartupConfiguration="{E9466C38-096A-0965-85B6-05C0FB580B85}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MarkerTextureUtility.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Visualizer/UIFunctions.cs">
     <Files>
-      <File FileName="Assets/FocusWindowController.cs" Line="13" Column="1" />
-      <File FileName="Assets/MarkerTextureUtility.cs" Line="16" Column="6" />
-      <File FileName="Assets/OverviewWindowControl.cs" Line="18" Column="5" />
-      <File FileName="Assets/Visualizer/MarkerManager.cs" Line="195" Column="22" />
+      <File FileName="Assets/Visualizer/RestNetworkManager.cs" Line="102" Column="1" />
+      <File FileName="Assets/Visualizer/MapPanel/Device_Status.cs" Line="38" Column="26" />
+      <File FileName="Assets/TerminalWindowControl.cs" Line="1" Column="1" />
+      <File FileName="Assets/Visualizer/UIFunctions.cs" Line="177" Column="10" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -14,8 +14,8 @@
               <Node name="Menu" expanded="True" />
               <Node name="Visualizer" expanded="True">
                 <Node name="MapPanel" expanded="True" />
+                <Node name="UIFunctions.cs" selected="True" />
               </Node>
-              <Node name="MarkerTextureUtility.cs" selected="True" />
             </Node>
           </Node>
         </State>

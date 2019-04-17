@@ -48,11 +48,15 @@ namespace InfinityCode.OnlineMapsExamples
             public OnlineMapsMarker m0;
             public OnlineMapsMarker m1; 
 
-            public List<OnlineMapsMarker> heatMarkers;
+            public List<OnlineMapsDrawingRect> heatMap;
+
+            public List<OnlineMapsDrawingLine> heatDot;
 
             public OnlineMapsMarker mStart;
 
             public OnlineMapsDrawingLine pathLine;
+
+            
 
 
 
@@ -80,7 +84,9 @@ namespace InfinityCode.OnlineMapsExamples
         {
             droneSelect = droneDropDown.GetComponent<DropDownController>();
 
-            heatMarkers = new List<OnlineMapsMarker>();
+            heatMap = new List<OnlineMapsDrawingRect>();
+
+            heatDot = new List<OnlineMapsDrawingLine>();
             
             startButton = flyButton.GetComponent<Button>();
 
@@ -216,8 +222,8 @@ namespace InfinityCode.OnlineMapsExamples
 
             for(int i = 0; i < thePath.lat.Length; i++){
                 
-                Debug.Log(thePath.lat[i]);
-                Debug.Log(thePath.lng[i]);
+                //Debug.Log(thePath.lat[i]);
+                //Debug.Log(thePath.lng[i]);
 
                 pathCoord.Add(new Vector2((float) thePath.lat[i],(float) thePath.lng[i]));
                 
@@ -309,6 +315,35 @@ namespace InfinityCode.OnlineMapsExamples
 
         }
 
+        public Color32 updateColor(float theCO){
+            float maxCO = 250;
+            float minCO = 0;
+
+            float diffCO = maxCO - minCO;
+
+            int scaledData = Mathf.RoundToInt((theCO - minCO) * 512/diffCO);
+
+            Color32 newColor;
+
+            if(scaledData < 256){
+                newColor = new Color32(
+                255,        // R
+                (byte) scaledData,        // G
+                0,        // B
+              200);
+
+            }else{
+                scaledData = scaledData - 255;
+                newColor = new Color32(
+                (byte)scaledData,        // R
+                255,        // G
+                0,        // B
+              200);
+                
+            }
+            return newColor;
+        }
+
 
         public void SendGeofence()
         {
@@ -363,7 +398,7 @@ namespace InfinityCode.OnlineMapsExamples
                 path mypath = JsonUtility.FromJson<path>(response);
 
                 pathRecieve = true;
-                Debug.Log(mypath.lat[0]);
+                //Debug.Log(mypath.lat[0]);
 
                 flightPath(mypath);
             }else{
@@ -375,18 +410,54 @@ namespace InfinityCode.OnlineMapsExamples
 
         }
 
+        //DONT MAKE SO MANY TEXTURES YOU DOPE
+        float plon = 0;
+        float plat = 0;
+
         private void stippleMap(){
+            
+
             foreach( Device_Status d in wsManager.drones){
                 //For each of the drones, we need to start dropping markers
-                float carbonMon = d.co;
-                //first we make a texture based on the reading
-                Texture2D tempTex = updateTexture(carbonMon);
-                //then we create a marker using the texture
-                heatMarkers.Add(OnlineMapsMarkerManager.CreateItem(
-                    new Vector2(d.lat, d.lon),
-                    tempTex,
-                    "hmp"
-                ));
+                if(d.lat != plat || d.lon != plon){
+                    float carbonMon = d.co;
+                    //first we make a texture based on the reading
+                    //Texture2D tempTex = updateTexture(carbonMon);
+                    Color32 tempCol = updateColor(0);
+                    //then we create a marker using the texture
+                    List<Vector2> tempDot = new List<Vector2>();
+                    tempDot.Add(new Vector2(d.lon,d.lat));
+                    tempDot.Add(new Vector2(d.lon + (float) 0.000005,d.lat + (float) 0.000005));
+                    OnlineMapsDrawingLine tempLine = new OnlineMapsDrawingLine(tempDot, tempCol, 10);
+                    heatDot.Add(tempLine);
+
+                    OnlineMapsDrawingRect tempRect = new OnlineMapsDrawingRect(d.lon, d.lat, 0.000025, 0.000025, Color.green,0 , Color.red);
+                    heatMap.Add(tempRect);
+                    Debug.Log("We just made a rectangle");
+
+
+                    plat = d.lat;
+                    plon = d.lon;
+
+
+                   //OnlineMapsDrawingElementManager.AddItem(tempRect);
+                    
+                    OnlineMapsDrawingElementManager.AddItem(tempLine);
+
+
+                    /*IMPORTANT SINCE WE ONLY PLAN ON USING ONE DRONE WE BREAK INSTANTLY '*/
+                    /*INSTEAD OF ITERATING THROUGH AN ENTIRE LIST */
+                    break; 
+
+                }
+                
+
+
+                // heatMap.Add(OnlineMapsMarkerManager.CreateItem(
+                //     new Vector2(d.lat, d.lon),
+                //     tempTex,
+                //     "hmp"
+                // ));
 
                 
 
@@ -408,13 +479,16 @@ namespace InfinityCode.OnlineMapsExamples
 
             
 
-            if(pathRecieve == true){
+            
                 request.SendWebRequest();
                 while(request.isDone != true){}
-                isFlying = true;
-            } else{
-                terminal.TerminalPrint("Path was not recieved by the server.");
-            }
+                isFlying = false;
+
+                // foreach(OnlineMapsDrawingRect r in heatMap){
+                //     OnlineMapsDrawingElementManager.AddItem(r);
+                // }
+
+            
         }
 
 
@@ -440,6 +514,7 @@ namespace InfinityCode.OnlineMapsExamples
         }
           
         void Update(){
+ 
             if(isFlying == true){
                 stippleMap();
             }

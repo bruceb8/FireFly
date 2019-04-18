@@ -7,6 +7,7 @@ using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class path{
     public double[] lat;
@@ -28,6 +29,16 @@ namespace InfinityCode.OnlineMapsExamples
 
             public GameObject map;
 
+            public GameObject flyButton;
+
+            private Button startButton;
+
+            public WSNetworkManager wsManager;
+
+            public GameObject droneDropDown;
+
+            public DropDownController droneSelect;
+
             public TerminalWindowControl terminal;
 
             public GameObject inputAltitude;
@@ -37,9 +48,15 @@ namespace InfinityCode.OnlineMapsExamples
             public OnlineMapsMarker m0;
             public OnlineMapsMarker m1; 
 
+            public List<OnlineMapsDrawingRect> heatMap;
+
+            public List<OnlineMapsDrawingLine> heatDot;
+
             public OnlineMapsMarker mStart;
 
             public OnlineMapsDrawingLine pathLine;
+
+            
 
 
 
@@ -49,15 +66,32 @@ namespace InfinityCode.OnlineMapsExamples
 
             private bool placeStart = false;
 
+            private bool pathRecieve = false;
+
             private int altitude = 30;
 
             private int cycles = 1;
 
+            private int  maxCO = 250;
+
             public int placeMarker = 0;
             private string url = "http://localhost:8080/GARBAGE"; 
-        private void Start()
+
+            Texture2D stipple;
+
+            Boolean isFlying = false; //Is the drone flying?
+
+            
+        void Start()
         {
-            url = "http://" + PlayerPrefs.GetString("ServerIP") + ":" + "8080/GARBAGE"; 
+            droneSelect = droneDropDown.GetComponent<DropDownController>();
+
+            heatMap = new List<OnlineMapsDrawingRect>();
+
+            heatDot = new List<OnlineMapsDrawingLine>();
+            
+            startButton = flyButton.GetComponent<Button>();
+
             // Subscribe to the click event.
             OnlineMapsControlBase.instance.OnMapClick += OnMapClick;
             // Create a label for the marker.
@@ -70,6 +104,9 @@ namespace InfinityCode.OnlineMapsExamples
             m0.enabled = false;
             m1.enabled = false;
             mStart.enabled = false;
+
+
+            stipple = Resources.Load<Texture2D>("circle");
 
             // foreach(OnlineMapsMarker marker in m_manager.items){
             //     string markerID = marker.label;
@@ -180,6 +217,10 @@ namespace InfinityCode.OnlineMapsExamples
             cycles = int.Parse(theInput);
         }
 
+        public void updateMaxCO(string theInput){
+            maxCO = int.Parse(theInput);
+        }
+
         private void flightPath(path thePath){
             //Now we need to iterate through the list of paired lat longs
             //And draw lines between each point in order.
@@ -187,8 +228,8 @@ namespace InfinityCode.OnlineMapsExamples
 
             for(int i = 0; i < thePath.lat.Length; i++){
                 
-                Debug.Log(thePath.lat[i]);
-                Debug.Log(thePath.lng[i]);
+                //Debug.Log(thePath.lat[i]);
+                //Debug.Log(thePath.lng[i]);
 
                 pathCoord.Add(new Vector2((float) thePath.lat[i],(float) thePath.lng[i]));
                 
@@ -207,8 +248,114 @@ namespace InfinityCode.OnlineMapsExamples
 
         }
 
+
+        /*
+        Heatmap drawing will start once we tell the drone to take off with a button
+        Then we will populate an array with pointers to rectangle drawings that we
+        put on the map.  These drawings will have varied color based on what we get
+        from the sensor. We can have one color and change the alpha value to be more
+        or less transparent.  This can replicate a heat map effect kinda.
+
+        The other option is to associate pixel values with a gps location on the
+        map.  This is way more complicated becuse it involves putting an overlay
+        on the map and having it scale with the 
+         */
+
+        //This function sc
+        public Texture2D updateTexture(float theCO){
+            
+            float minCO = 0;
+
+            float diffCO = maxCO - minCO;
+
+            int scaledData = Mathf.RoundToInt((theCO - minCO) * 512/diffCO);
+            Color32[] pixels = stipple.GetPixels32();
+            Color32[] temppixels = new Color32[pixels.Length];
+
+            Color32 newColor;
+
+            if(scaledData < 256){
+                newColor = new Color32(
+                255,        // R
+                (byte) scaledData,        // G
+                0,        // B
+              200);
+
+            }else{
+                scaledData = scaledData - 255;
+                newColor = new Color32(
+                (byte)scaledData,        // R
+                255,        // G
+                0,        // B
+              200);
+                
+            }
+
+            //Assume red is max at the start
+
+            //First we start pumping green up
+
+            //When green is at 255, we need to start bringing red down.
+
+            for (int i = 0; i < stipple.height * stipple.width; i++)
+        {
+            if (pixels[i].a != 0)
+            {
+                temppixels[i] = newColor;
+            }
+            else
+            {
+                temppixels[i] = pixels[i];
+            }
+        }
+
+
+
+            Texture2D temp = new Texture2D(stipple.width, stipple.height);
+            temp.SetPixels32(temppixels, 0);
+            temp.Apply();
+
+            return temp;
+
+            
+
+        }
+
+        public Color32 updateColor(float theCO){
+            float minCO = 0;
+
+            float diffCO = maxCO - minCO;
+
+            //if theCO - minCO is negative make the value minCO
+
+            int scaledData = Mathf.RoundToInt((theCO - minCO) * 512/diffCO);
+
+            Color32 newColor;
+
+            if(scaledData < 256){
+                newColor = new Color32(
+                (byte) scaledData,        // R
+                255,        // G
+                0,        // B
+              150);
+
+            }else{
+                scaledData = 512 - scaledData;
+                newColor = new Color32(
+                255,        // R
+                (byte) scaledData,        // G
+                0,        // B
+              150);
+                
+            }
+            return newColor;
+        }
+
+
         public void SendGeofence()
         {
+            url = "http://" + PlayerPrefs.GetString("ServerIP") + ":" + "8080/GARBAGE"; 
+
             var request = new UnityWebRequest(url, "POST");
 
             //Now we have to build the JSON string from the beacons
@@ -257,21 +404,151 @@ namespace InfinityCode.OnlineMapsExamples
                 terminal.TerminalPrint(test);
                 path mypath = JsonUtility.FromJson<path>(response);
 
-                Debug.Log(mypath.lat[0]);
+                pathRecieve = true;
+                //Debug.Log(mypath.lat[0]);
 
                 flightPath(mypath);
             }else{
                 Debug.Log("Y'all didnt place nothin");
+                terminal.TerminalPrint("Make sure to place the Starting Waypoint" +
+                "\n and the two bounding waypoints");
             }
-     
-
-            
-            
-
 
 
         }
+
+        //DONT MAKE SO MANY TEXTURES YOU DOPE
+        float plon = 0;
+        float plat = 0;
+
+        float testMon = 0;
+
+        private void stippleMap(){
+            
+            
+
+            foreach( Device_Status d in wsManager.drones){
+                //For each of the drones, we need to start dropping markers
+                if(d.lat != plat || d.lon != plon){
+                    testMon = (testMon + 20)%80;
+                    Debug.Log(testMon);
+                    float carbonMon = d.co;
+                    //first we make a texture based on the reading
+                    //Texture2D tempTex = updateTexture(carbonMon);
+                    Color32 tempCol = updateColor(testMon);
+                    //then we create a marker using the texture
+                    //List<Vector2> tempDot = new List<Vector2>();
+                    //tempDot.Add(new Vector2(d.lon,d.lat));
+                    //tempDot.Add(new Vector2(d.lon + (float) 0.000005,d.lat + (float) 0.000005));
+                    //OnlineMapsDrawingLine tempLine = new OnlineMapsDrawingLine(tempDot, tempCol, 10);
+                    //heatDot.Add(tempLine);
+
+                    OnlineMapsDrawingRect tempRect = new OnlineMapsDrawingRect(d.lon - (float) 0.000025, d.lat - (float) 0.000025, 0.00005, 0.00005, Color.green,0 , tempCol);
+                    heatMap.Add(tempRect);
+                    //Debug.Log("We just made a rectangle");
+
+
+                    plat = d.lat;
+                    plon = d.lon;
+
+
+                   OnlineMapsDrawingElementManager.AddItem(tempRect);
+                    
+                    //OnlineMapsDrawingElementManager.AddItem(tempLine);
+
+
+                    /*IMPORTANT SINCE WE ONLY PLAN ON USING ONE DRONE WE BREAK INSTANTLY '*/
+                    /*INSTEAD OF ITERATING THROUGH AN ENTIRE LIST */
+                    break; 
+
+                }
+                
+
+
+                // heatMap.Add(OnlineMapsMarkerManager.CreateItem(
+                //     new Vector2(d.lat, d.lon),
+                //     tempTex,
+                //     "hmp"
+                // ));
+
+                
+
+                
+
+            }
+
+        }
+
+        public void clearHeatmap(){
+            foreach(OnlineMapsDrawingRect x in heatMap){
+                OnlineMapsDrawingElementManager.RemoveItem(x);
+            }
+            heatMap.Clear();
+        }
+
+
+
+        public void landDrone(){
+            url = "http://" + PlayerPrefs.GetString("ServerIP") + ":" + "8080/appLand"; 
+            var request = new UnityWebRequest(url, "POST");
+            byte[] bodyRaw = Encoding.UTF8.GetBytes("{\"drone\":\"id placeholder\"}");
+            request.uploadHandler = (UploadHandler) new UploadHandlerRaw(bodyRaw);
+            request.downloadHandler = new DownloadHandlerBuffer();
+
+            request.SetRequestHeader("Content-Type", "text/plain");
+            
+
+            
+
+            
+                request.SendWebRequest();
+                while(request.isDone != true){}
+                isFlying = false;
+
+                // foreach(OnlineMapsDrawingRect r in heatMap){
+                //     OnlineMapsDrawingElementManager.AddItem(r);
+                // }
+
+            
+        }
+
+
+        public void startFlight(){
+            url = "http://" + PlayerPrefs.GetString("ServerIP") + ":" + "8080/appStartFlight"; 
+            var request = new UnityWebRequest(url, "POST");
+            byte[] bodyRaw = Encoding.UTF8.GetBytes("{\"drone\":\"id placeholder\"}");
+            request.uploadHandler = (UploadHandler) new UploadHandlerRaw(bodyRaw);
+            request.downloadHandler = new DownloadHandlerBuffer();
+
+            request.SetRequestHeader("Content-Type", "text/plain");
+            
+
+            
+
+            if(pathRecieve == true){
+                request.SendWebRequest();
+                while(request.isDone != true){}
+                isFlying = true;
+            } else{
+                terminal.TerminalPrint("Path was not recieved by the server.");
+            }
+        }
+          
+        void Update(){
+ 
+            if(isFlying == true){
+                stippleMap();
+            }
+
+            if(pathRecieve == false){
+                startButton.interactable = false;
+            }else{
+                startButton.interactable = true;
+            }
+        }
     }
+
+    
 
     
 

@@ -17,6 +17,10 @@ public class path{
 
 }
 
+public class battery{
+    public string BATTERY;
+}
+
 
 
 namespace InfinityCode.OnlineMapsExamples
@@ -32,6 +36,8 @@ namespace InfinityCode.OnlineMapsExamples
             public GameObject flyButton;
 
             private Button startButton;
+
+            public Button pathButton;
 
             public WSNetworkManager wsManager;
 
@@ -115,7 +121,50 @@ namespace InfinityCode.OnlineMapsExamples
             //         marker.enabled = false;
             //     }
             // }
+
+            StartCoroutine(batteryUpdate());
+
         }
+
+        IEnumerator batteryUpdate(){
+
+            while(true){
+                UnityWebRequest webRequest = UnityWebRequest.Get("http://" + PlayerPrefs.GetString("ServerIP") + ":" + "8080/appDroneBattery");
+        
+                // Request and wait for the desired page.
+                webRequest.downloadHandler = new DownloadHandlerBuffer();
+                webRequest.SetRequestHeader("Content-Type", "text/plain");
+                yield return webRequest.SendWebRequest();
+                
+                 if (webRequest.isNetworkError || webRequest.responseCode == 204)
+                {
+                    Debug.Log("Battery Update not got correctly: " + webRequest.error);
+                }
+                else {
+
+                    //Debug.Log("Error: " + webRequest.responseCode);
+                    Debug.Log(webRequest.downloadHandler.text);
+                    battery tempBat = JsonUtility.FromJson<battery>(webRequest.downloadHandler.text);
+                    terminal.TerminalColorPrint("Drone Battery Percentage: " + tempBat.BATTERY, Color.green);
+
+
+
+                   
+                }
+
+                yield return new WaitForSeconds((float) 5);
+
+                
+
+            }
+                
+
+        }
+
+        /* I need to make a coroutine to check the drone batteries
+           The co routine will loop through the drone device list
+           and check every 5 seconds for each drone.
+           This will be displayed */
 
 
         /*
@@ -221,6 +270,49 @@ namespace InfinityCode.OnlineMapsExamples
             maxCO = int.Parse(theInput);
         }
 
+         IEnumerator displayPath(){
+            UnityWebRequest webRequest = UnityWebRequest.Get("http://" + PlayerPrefs.GetString("ServerIP") + ":" + "8080/appMavCoords");
+        
+            // Request and wait for the desired page.
+            webRequest.downloadHandler = new DownloadHandlerBuffer();
+            webRequest.SetRequestHeader("Content-Type", "text/plain");
+            yield return webRequest.SendWebRequest();
+            pathButton.interactable = false;
+
+            //Debug.Log("Error: " + webRequest.responseCode);
+
+            
+
+
+            
+
+            if (webRequest.isNetworkError)
+            {
+                Debug.Log("Error: " + webRequest.error);
+            }
+            else if(webRequest.responseCode == 200){
+
+                Debug.Log("We finished a request: " + webRequest.downloadHandler.text);
+                path tempPath = JsonUtility.FromJson<path>(webRequest.downloadHandler.text);
+
+                //Debug.Log(tempPath.lat[0]);
+
+                flightPath(tempPath);
+                pathButton.interactable = true;
+
+                
+
+            }else
+            {
+                Debug.Log("Waiting for path to generate: " + webRequest.downloadHandler.text);
+
+                yield return new WaitForSeconds((float) 1);
+                StartCoroutine(displayPath());
+                
+            }
+        }
+             
+
         private void flightPath(path thePath){
             //Now we need to iterate through the list of paired lat longs
             //And draw lines between each point in order.
@@ -231,7 +323,7 @@ namespace InfinityCode.OnlineMapsExamples
                 //Debug.Log(thePath.lat[i]);
                 //Debug.Log(thePath.lng[i]);
 
-                pathCoord.Add(new Vector2((float) thePath.lat[i],(float) thePath.lng[i]));
+                pathCoord.Add(new Vector2((float) thePath.lng[i],(float) thePath.lat[i]));
                 
             }
 
@@ -241,7 +333,7 @@ namespace InfinityCode.OnlineMapsExamples
             }
 
 
-            pathLine = new OnlineMapsDrawingLine(pathCoord, Color.red, 5);
+            pathLine = new OnlineMapsDrawingLine(pathCoord, Color.red, 3);
             OnlineMapsDrawingElementManager.AddItem(pathLine);
 
             
@@ -402,12 +494,18 @@ namespace InfinityCode.OnlineMapsExamples
                 Debug.Log("Status Code: " + request.responseCode);
                 string response = request.downloadHandler.text;
                 terminal.TerminalPrint(test);
+                //START A CO ROUTINE HERE
+                //WE NEED AN IENUMERATOR TO GET THE FLIGHT FROM THE SERVER
+                
                 path mypath = JsonUtility.FromJson<path>(response);
 
                 pathRecieve = true;
-                //Debug.Log(mypath.lat[0]);
+                Debug.Log(request.downloadHandler.text);
 
-                flightPath(mypath);
+                //flightPath(mypath);
+
+                StartCoroutine(displayPath());
+
             }else{
                 Debug.Log("Y'all didnt place nothin");
                 terminal.TerminalPrint("Make sure to place the Starting Waypoint" +
@@ -431,11 +529,11 @@ namespace InfinityCode.OnlineMapsExamples
                 //For each of the drones, we need to start dropping markers
                 if(d.lat != plat || d.lon != plon){
                     testMon = (testMon + 20)%80;
-                    Debug.Log(testMon);
+                    //Debug.Log(testMon);
                     float carbonMon = d.co;
                     //first we make a texture based on the reading
                     //Texture2D tempTex = updateTexture(carbonMon);
-                    Color32 tempCol = updateColor(testMon);
+                    Color32 tempCol = updateColor(carbonMon);
                     //then we create a marker using the texture
                     //List<Vector2> tempDot = new List<Vector2>();
                     //tempDot.Add(new Vector2(d.lon,d.lat));

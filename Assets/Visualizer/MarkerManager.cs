@@ -46,7 +46,8 @@ public class MarkerManager : MonoBehaviour
         {
             if (!ff.isMarker)
             {
-                OnlineMapsMarker temp = m_manager.Create(new Vector2(ff.lon, ff.lat), m_texture.changeTextureColor(m_texture.FF_texture, out ff.marker_color), "FF:" + ff.id);
+                OnlineMapsMarker temp = m_manager.Create(new Vector2(ff.lon, ff.lat), m_texture.FF_texture , "FF:" + ff.id);
+                ff.marker_color = m_texture.FF_color;
                 temp.scale = 0.1f;
                 ff.marker = temp;
 
@@ -63,6 +64,7 @@ public class MarkerManager : MonoBehaviour
             if (!bn.isMarker)
             {
                 OnlineMapsMarker temp = m_manager.Create(new Vector2(bn.lon, bn.lat), m_texture.BN_texture, "BN:" + bn.id);
+                bn.marker_color = m_texture.BN_color;
                 temp.scale = 0.1f;
                 bn.marker = temp;
                 temp.OnClick += OnMarkerClick;
@@ -77,9 +79,11 @@ public class MarkerManager : MonoBehaviour
         {
             if (!dn.isMarker)
             {
-                OnlineMapsMarker temp = m_manager.Create(new Vector2(dn.lon, dn.lat), m_texture.changeTextureColor(m_texture.DN_texture, out dn.marker_color), "DN:" + dn.id);
+                OnlineMapsMarker temp = m_manager.Create(new Vector2(dn.lon, dn.lat), m_texture.DN_texture, "DN:" + dn.id);
+                
                 temp.scale = 0.1f;
                 dn.marker = temp;
+                dn.marker_color = m_texture.DN_color;
 
                 temp.OnClick += OnMarkerClick;
                 dn.isMarker = true;

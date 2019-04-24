@@ -92,6 +92,7 @@ public class WSNetworkManager : MonoBehaviour
 
         WebMessage message = JsonUtility.FromJson<WebMessage>(e.Data);
         //Debug.Log(message.body);
+
         if (message.type == "terminal")
         {
             terminal.TerminalColorPrint(message.body, Color.green);
@@ -108,6 +109,8 @@ public class WSNetworkManager : MonoBehaviour
                 if (index >= 0)
                 {
                     firefighters[index].updateStatus(temp_device);
+                  
+
 
                 }
                 else
@@ -140,6 +143,8 @@ public class WSNetworkManager : MonoBehaviour
                 if (index >= 0)
                 {
                     drones[index].updateStatus(temp_device);
+                 
+
                 }
                 else
                 {

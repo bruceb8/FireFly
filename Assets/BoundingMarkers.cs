@@ -86,6 +86,7 @@ namespace InfinityCode.OnlineMapsExamples
             Texture2D stipple;
 
             Boolean isFlying = false; //Is the drone flying?
+            
 
             
         void Start()
@@ -373,7 +374,7 @@ namespace InfinityCode.OnlineMapsExamples
                 255,        // R
                 (byte) scaledData,        // G
                 0,        // B
-              100);
+              50);
 
             }else{
                 scaledData = scaledData - 255;
@@ -381,7 +382,7 @@ namespace InfinityCode.OnlineMapsExamples
                 (byte)scaledData,        // R
                 255,        // G
                 0,        // B
-              100);
+              50);
                 
             }
 
@@ -545,6 +546,7 @@ namespace InfinityCode.OnlineMapsExamples
 
                     OnlineMapsDrawingRect tempRect = new OnlineMapsDrawingRect(d.lon - (float) 0.000025, d.lat - (float) 0.000025, 0.00005, 0.00005, Color.green,0 , tempCol);
                     heatMap.Add(tempRect);
+                    
                     //Debug.Log("We just made a rectangle");
 
 
@@ -584,6 +586,13 @@ namespace InfinityCode.OnlineMapsExamples
                 OnlineMapsDrawingElementManager.RemoveItem(x);
             }
             heatMap.Clear();
+        }
+        Boolean heatHide = false;
+        public void hideHeatmap(){
+            foreach(OnlineMapsDrawingRect x in heatMap){
+                x.visible = heatHide; 
+            }
+            heatHide = !heatHide;
         }
 
 

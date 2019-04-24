@@ -122,7 +122,9 @@ namespace InfinityCode.OnlineMapsExamples
             //     }
             // }
 
-            StartCoroutine(batteryUpdate());
+            //WE COMMENT THIS OUT BECAUSE THE BATTERY UPDATE IS NOT WORKING YET
+
+           // StartCoroutine(batteryUpdate());
 
         }
 
@@ -333,7 +335,7 @@ namespace InfinityCode.OnlineMapsExamples
             }
 
 
-            pathLine = new OnlineMapsDrawingLine(pathCoord, Color.red, 3);
+            pathLine = new OnlineMapsDrawingLine(pathCoord, Color.red, 2);
             OnlineMapsDrawingElementManager.AddItem(pathLine);
 
             
@@ -371,7 +373,7 @@ namespace InfinityCode.OnlineMapsExamples
                 255,        // R
                 (byte) scaledData,        // G
                 0,        // B
-              200);
+              100);
 
             }else{
                 scaledData = scaledData - 255;
@@ -379,7 +381,7 @@ namespace InfinityCode.OnlineMapsExamples
                 (byte)scaledData,        // R
                 255,        // G
                 0,        // B
-              200);
+              100);
                 
             }
 

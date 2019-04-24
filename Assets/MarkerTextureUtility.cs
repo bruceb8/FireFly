@@ -12,7 +12,7 @@ public class MarkerTextureUtility : MonoBehaviour
     void Start()
     {
         FF_color = Color.red;
-        BN_color = Color.black;
+        BN_color = Color.cyan;
         DN_color = Color.blue;
 
         DN_texture = Resources.Load<Texture2D>("Square2");
@@ -31,7 +31,7 @@ public class MarkerTextureUtility : MonoBehaviour
         Color32[] pixels = input.GetPixels32(); //get current texture pixels
         Color32[] current_pixels = Currently_Selected.GetPixels32();
         Color32[] temppixels = new Color32[pixels.Length]; //empty texture
-        Color32 overlayColor = new Color32(255, 0, 0, 255);
+        Color32 overlayColor = Color.white; //new Color32(255, 0, 0, 255);
 
         for (int i = input.width * 5 + 1; i < input.width * input.height; i++)
         {
